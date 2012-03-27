@@ -1,0 +1,18 @@
+class CreateMovies < ActiveRecord::Migration
+  def up
+    create_table :movies do |t|
+      t.string :title
+      t.string :director
+      t.string :rating
+      t.string :location
+      t.string :quality
+      t.datetime :release_date
+
+      t.timestamps
+    end
+  end
+  
+  def down
+    drop_table :movies
+  end
+end

@@ -1,0 +1,25 @@
+%h1 Edit Existing Movie "#{@movie.title}"
+
+= form_tag movie_path(@movie), :method => :put do
+
+	= label :movie, :title, 'Title'
+	= text_field :movie, 'title'
+  
+	= label :movie, :director, 'Director'
+	= text_field :movie, 'director'
+
+	= label :movie, :rating, 'Rating'
+	= select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+
+	= label :movie, :location, 'Location'
+	= select :movie, :location, ['E', 'F', 'G', 'H']
+
+	= label :movie, :quality, 'Quality'
+	- @all_qualities.each do |quality|
+		= quality
+		= check_box_tag "quality[#{quality}]", "1", @movie.quality.include?(quality)
+
+	= label :movie, :release_date, 'Released On'
+	= date_select :movie, :release_date
+
+	= submit_tag 'Update Movie', :class => "btn btn-inverse"
