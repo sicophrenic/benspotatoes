@@ -6,3 +6,4 @@ jquery-ui.min.js: jquery-ui.min-4258e47b40673a02bedfda178628bfba.js
 jquery.min.js: jquery.min-17322428695737103f15e8b9db8b5909.js
 application.js: application-a2961e2c0478ccf8a62d315bbd49207c.js
 application.css: application-0e4a6ac4796081dc2d36250dbf42270b.css
+custom.css: custom-0e4a6ac4796081dc2d36250dbf42270b.css
