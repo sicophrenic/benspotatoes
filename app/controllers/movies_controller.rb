@@ -5,22 +5,34 @@ class MoviesController < ApplicationController
     end
     
     @all_ratings = Movie.all_ratings
-    @selected_ratings = params[:ratings] || session[:ratings] || {}
-    if params[:ratings] != session[:ratings] and @selected_ratings != {}
+    @ratings_hash = {}
+    @all_ratings.each do |rating|
+      @ratings_hash[rating] = "1"
+    end
+    @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
+    if params[:ratings] != session[:ratings] and @selected_ratings != @ratings_hash
       session[:ratings] = params[:ratings]
       @restore = true
     end
     
     @all_locations = Movie.all_locations
-    @selected_locations = params[:locations] || session[:locations] || {}
-    if params[:locations] != session[:locations] and @selected_locations != {}
+    @locations_hash = {}
+    @all_locations.each do |location|
+      @locations_hash[location] = "1"
+    end
+    @selected_locations = params[:locations] || session[:locations] || @locations_hash
+    if params[:locations] != session[:locations] and @selected_locations != @locations_hash
       session[:locations] = params[:locations]
       @restore = true
     end
     
     @all_qualities = Movie.all_qualities
-    @selected_qualities = params[:qualities] || session[:qualities] || {}
-    if params[:qualities] != session[:qualities] and @selected_qualities != {}
+    @qualities_hash = {}
+    @all_qualities.each do |quality|
+      @qualities_hash[quality] = "1"
+    end
+    @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
+    if params[:qualities] != session[:qualities] and @selected_qualities != @qualities_hash
       session[:qualities] = params[:qualities]
       @restore = true
     end
