@@ -21,7 +21,6 @@ class Movie < ActiveRecord::Base
                       :length   => { :maximum => 5 }
   validates :location,  :presence => true,
                         :length   => { :maximum => 1 }
-  quality_regex = /(480p|1080p|720p)/
   validates :quality, :presence => true
 
   def self.all_ratings

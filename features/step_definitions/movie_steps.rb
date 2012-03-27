@@ -26,13 +26,13 @@ When /I (un)?check the following locations: (.*)/ do |uncheck, location_list|
   end
 end
 
-When /I (un)?check the following encodings: (.*)/ do |uncheck, encoding_list|
+When /I (un)?check the following qualities: (.*)/ do |uncheck, encoding_list|
   encodings = encoding_list.split(', ')
   encodings.each do |encoding|
     if uncheck
-      step %Q{I uncheck "encodings[#{encoding}]"}
+      step %Q{I uncheck "qualities[#{encoding}]"}
     else
-      step %Q{I check "encodings[#{encoding}]"}
+      step %Q{I check "qualities[#{encoding}]"}
     end
   end
 end

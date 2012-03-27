@@ -25,8 +25,8 @@ Scenario: ratings -- restrict to movies with 'PG' or 'R' ratings
 	When I check the following ratings: PG, R
 	When I uncheck the following ratings: PG-13, NC-17, G
 	When I check the following locations: E, F, G, H
-	When I check the following encodings: 480p, 720p, 1080p
-	When I press "filter_submit"
+	When I check the following qualities: 480p, 720p, 1080p
+	When I press "filters_submit"
 	Then I should see "The Incredibles"
 	And I should see "Raiders of the Lost Ark"
 	And I should see "The Terminator"
@@ -42,8 +42,8 @@ Scenario: location -- restrict to movies located on 'F:\'
 	When I check the following ratings: PG, R, PG-13, NC-17, G
 	When I check the following locations: F
 	When I uncheck the following locations: E, G, H
-	When I check the following encodings: 480p, 720p, 1080p
-	When I press "filter_submit"
+	When I check the following qualities: 480p, 720p, 1080p
+	When I press "filters_submit"
 	Then I should see "The Terminator"
 	And I should see "Amelie"
 	And I should see "Raiders of the Lost Ark"
@@ -58,9 +58,9 @@ Scenario: location -- restrict to movies located on 'F:\'
 Scenario: quality -- restrict to movies encoded at '1080p'
 	When I check the following ratings: PG, R, PG-13, NC-17, G
 	When I check the following locations: E, F, G, H	
-	When I check the following encodings: 1080p
-	When I uncheck the following encodings: 480p, 720p
-	When I press "filter_submit"
+	When I check the following qualities: 1080p
+	When I uncheck the following qualities: 480p, 720p
+	When I press "filters_submit"
 	Then I should see "When Harry Met Sally"
 	And I should see "The Incredibles"
 	And I should not see "Aladdin"
@@ -77,8 +77,9 @@ Scenario: ratings, location, quality -- restrict to movies with 'R' rating locat
 	When I uncheck the following ratings: PG, PG-13, NC-17, G
 	When I check the following locations: E
 	When I uncheck the following locations: F, G, H
-	When I check the following encodings: 720p
-	When I uncheck the following encodings: 480p, 1080p
+	When I check the following qualities: 720p
+	When I uncheck the following qualities: 480p, 1080p
+	When I press "filters_submit"
 	Then I should not see "Aladdin"
 	And I should not see "The Terminator"
 	And I should not see "When Harry Met Sally"

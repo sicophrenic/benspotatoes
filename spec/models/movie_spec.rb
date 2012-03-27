@@ -51,18 +51,4 @@ describe Movie do
   it "should require a quality" do
     Movie.new(@attr.merge(:quality => "")).should_not be_valid
   end
-  
-  it "should accept valid qualities" do
-    qualities = %w[480p 720p 1080p]
-    qualities.each do |quality|
-      Movie.new(@attr.merge(:quality => quality)).should be_valid
-    end
-  end
-  
-  it "should reject invalid qualities" do
-    qualities = %w[480i 720i 1080i 240p 540i 640i 640p]
-    qualities.each do |quality|
-      Movie.new(@attr.merge(:quality => quality)).should_not be_valid
-    end
-  end
 end
