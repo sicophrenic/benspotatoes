@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   def index
     if params[:nuke]
       session.clear
+        redirect_to movies_path()
     end
     
     @all_ratings = Movie.all_ratings
@@ -62,7 +63,9 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find(params[:id])
+    @all_ratings = Movie.all_ratings
     @all_qualities = Movie.all_qualities
+    @all_locations = Movie.all_locations
   end
 
   def create
