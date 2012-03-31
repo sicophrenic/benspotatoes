@@ -38,17 +38,29 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
+    @sort = params[:sort] || session[:sort]
+    case @sort
+    when 'title'
+      orderby = :title
+      @title_header = 'hilite'
+    when 'release_date'
+      orderby = :release_date
+      @release_header = 'hilite'
+    end
+    
     if @restore
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
-                              :qualities => @selected_qualities)
+                              :qualities => @selected_qualities,
+                              :sort => @sort)
     end
     
-    @movies = Movie.find(:all, :conditions => ["rating IN (?) AND
+    @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
                                                 location IN (?) AND
                                                 quality IN (?)",  @selected_ratings.keys,
                                                                   @selected_locations.keys,
-                                                                  @selected_qualities.keys])
+                                                                  @selected_qualities.keys],
+                                :order => orderby)
   end
 
   def show

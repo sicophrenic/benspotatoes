@@ -4645,3 +4645,8 @@ a.thumbnail:hover {
     margin-left: 30px;
   }
 }
+
+/* Non-Bootstrap Custom CSS */
+table#movies th.hilite {
+  background-color: #f9f9f9;
+}
