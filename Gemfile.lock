@@ -206,5 +206,5 @@ DEPENDENCIES
   sqlite3
   therubyracer
   turn
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (~> 2.0rc0)
   uglifier
