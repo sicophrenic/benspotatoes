@@ -37,6 +37,12 @@ class MoviesController < ApplicationController
       session[:qualities] = params[:qualities]
       @restore = true
     end
+
+    @search = params[:search] || session[:search] || ''
+    if params[:search] != session[:search] && params[:search] != ''
+      session[:search] = params[:search]
+      @restore = true
+    end
     
     @sort = params[:sort] || session[:sort]
     case @sort
@@ -52,15 +58,27 @@ class MoviesController < ApplicationController
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,
-                              :sort => @sort)
+                              :sort => @sort,
+                              :search => @search)
     end
     
-    @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                location IN (?) AND
-                                                quality IN (?)",  @selected_ratings.keys,
-                                                                  @selected_locations.keys,
-                                                                  @selected_qualities.keys],
-                                :order => orderby)
+    if @search != ''
+      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                  location IN (?) AND
+                                                  quality IN (?) AND
+                                                  title LIKE (?)",  @selected_ratings.keys,
+                                                                    @selected_locations.keys,
+                                                                    @selected_qualities.keys,
+                                                                    "%#{@search}%"],
+                                  :order => orderby)
+    else
+      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                  location IN (?) AND
+                                                  quality IN (?)",  @selected_ratings.keys,
+                                                                    @selected_locations.keys,
+                                                                    @selected_qualities.keys],
+                                  :order => orderby)
+    end
   end
 
   def show

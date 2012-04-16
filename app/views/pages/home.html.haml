@@ -1,0 +1,9 @@
+%h1 Welcome to Ben's Potatoes!
+%br
+
+= form_tag movies_path, :method => :get, :id => 'filters_form', :class => 'well form-search' do
+	Input the title of the movie(s) you would like to search for!
+	%br
+	%br
+	= text_field_tag 'search', @search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
+	= submit_tag 'Search Movies', :id => 'filters_submit', :class => "btn btn-inverse"

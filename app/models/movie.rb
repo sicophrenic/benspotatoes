@@ -15,8 +15,7 @@
 
 class Movie < ActiveRecord::Base
   validates :title, :presence   => true,
-                    :length     => { :maximum => 50 },
-                    :uniqueness => true
+                    :length     => { :maximum => 50 }
   validates :rating,  :presence => true,
                       :length   => { :maximum => 5 }
   validates :location,  :presence => true,

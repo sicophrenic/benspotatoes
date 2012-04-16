@@ -1,5 +1,5 @@
 .page-header
-	%h1= link_to "All Movies", movies_path({:nuke=>"nuke"})
+	%h1= link_to "All Movies (Click to Reset)", movies_path({:nuke=>"nuke"})
 
 %table#filters.table
 	%thead
@@ -27,7 +27,8 @@
 						= check_box_tag "qualities[#{quality}]", 1,
 							@selected_qualities.include?(quality)
 				%th
-					= submit_tag 'Refresh', :id => 'filters_submit', :class => "btn btn-inverse"
+					= text_field_tag 'search', @search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
+					= submit_tag 'Filter', :id => 'filters_submit', :class => "btn btn-inverse"
 
 %table#movies.table.table-bordered.table-condensed
 	%thead
@@ -55,5 +56,3 @@
 				%td= movie.release_date.strftime("%F")
 
 = button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
-
-= debug params
