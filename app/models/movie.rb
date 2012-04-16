@@ -32,6 +32,6 @@ class Movie < ActiveRecord::Base
   end
   
   def self.all_locations
-    %w(E F G H)
+    %w(E F G H K)
   end
 end

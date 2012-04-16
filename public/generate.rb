@@ -10,9 +10,11 @@ require 'mechanize'
 # Release Date
 
 title, director, rating, location, quality, release = "","","","","",""
-months = { "January" => "Jan", "February" => "Feb", "March" => "Mar", "April" => "Apr", "May" => "May", "June" => "Jun", "July" => "Jul", "August" => "Aug", "September" => "Sep", "November" => "Nov", "December" => "Dec" }
-writeFile = File.open('allpotatoes.032612.rb','r+')
-File.open('allpotatoes.032612.tsv','r') do |opened|
+months = { "January" => "Jan", "February" => "Feb", "March" => "Mar", "April" => "Apr", "May" => "May", "June" => "Jun", "July" => "Jul", "August" => "Aug", "September" => "Sep", "October" => "Oct", "November" => "Nov", "December" => "Dec" }
+writeFile = File.open('allpotatoes.041612.rb','r+')
+# puts 'List of Movies (filename)?:'
+# inFile = gets
+File.open('allpotatoes.041612.tsv','r') do |opened|
   while title = opened.gets
     agent = Mechanize.new
     page = agent.get('http://google.com')
@@ -22,8 +24,15 @@ File.open('allpotatoes.032612.tsv','r') do |opened|
     page = page.link_with(:text=>/Box Office Mojo/).click
     puts 'Title: '+title
     # DIRECTOR
+    page.body.match(/Director&id=.*.htm">(.*)<\/a>.*Writers?:/)
+    director = $1 || nil
     page.body.match(/Director&id=.*.htm">(.*)<\/a>.*Actors:/)
-    director = $1
+    check = $1
+    if director != check && director == nil
+      director = check || ""
+    elsif director == nil
+      director = ""
+    end
     puts 'Director: '+director
     # RATING
     page.body.match(/MPAA Rating: <b>(.*)<\/b>/)
@@ -39,6 +48,10 @@ File.open('allpotatoes.032612.tsv','r') do |opened|
     # RELEASE DATE
     page.body.match(/Release Date:.*.htm">(.*)<\/a>.*Genre:/)
     origRelease = $1
+    if origRelease == nil
+      page.body.match(/Release Date: .*<nobr>(.*)<\/nobr>/)
+      origRelease = $1
+    end
     release = origRelease.gsub(',','')
     release = release.split
     day = release[1]

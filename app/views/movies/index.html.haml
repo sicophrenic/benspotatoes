@@ -52,7 +52,7 @@
 				%td= movie.rating
 				%td= movie.location
 				%td= movie.quality
-				%td= movie.release_date
+				%td= movie.release_date.strftime("%F")
 
 = button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
 

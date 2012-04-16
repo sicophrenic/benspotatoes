@@ -1,0 +1,16 @@
+.navbar.navbar-fixed-top
+	.navbar-inner
+		.container
+			%a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			%a.brand{ :href => movies_path } Ben's Potatoes
+			.nav-collapse
+				%ul.nav.pull-right
+					%li.active
+						%a{ :href => movies_path } Home
+					%li
+						%a{ :href => "#" } About
+					%li
+						%a{ :href => "#" } Todo
