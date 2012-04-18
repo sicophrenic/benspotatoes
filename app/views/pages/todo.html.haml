@@ -1,2 +1,37 @@
-<h1>Pages#todo</h1>
-<p>Find me in app/views/pages/todo.html.erb</p>
+%h1 TODO For Ben"s Potatoes
+%br
+
+.container-fluid
+	.row-fluid
+		.span2
+			.tabbable.tabs-left
+				%ul.nav.nav-tabs
+					%li
+						%a{ "href" => "#1A", "data-toggle" => "tab" }Backend
+					%li
+						%a{ "href" => "#1B", "data-toggle" => "tab" }Frontend
+					%li
+						%a{ "href" => "#1C", "data-toggle" => "tab" }Miscellaneous
+		.span10
+			.tab-content
+				.tab-pane#1A
+					%h3 Backend
+					%dl
+						%dt Users
+						%dd Creation of User profiles and accounts to track activity
+						%dt Movie Details
+						%dd Incorporate additional movie details (actors?, revenue?)
+				.tab-pane#1B
+					%h3 Frontend
+					%dl
+						%dt Pagination
+						%dd Paginate the list of movies displayed (10, 25 per page?)
+						%dt Movie Quality
+						%dd Identify movie entries in table by quality
+				.tab-pane#1C
+					%h3 Miscellaneous
+					%dl
+						%dt Security
+						%dd Prevent any accessor from modifying data
+						%dt Advanced Search
+						%dd Provide a form for more specific and refined movie searching (Director, Actors?, Release Date)
