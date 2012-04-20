@@ -66,10 +66,10 @@ class MoviesController < ApplicationController
       @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
                                                   location IN (?) AND
                                                   quality IN (?) AND
-                                                  title LIKE (?)",  @selected_ratings.keys,
+                                                  lower(title) LIKE (?)",  @selected_ratings.keys,
                                                                     @selected_locations.keys,
                                                                     @selected_qualities.keys,
-                                                                    "%#{@search}%"],
+                                                                    "%#{@search.downcase}%"],
                                   :order => orderby)
     else
       @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
