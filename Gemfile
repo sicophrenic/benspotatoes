@@ -37,6 +37,9 @@ gem 'haml'
 
 gem 'jquery-rails'
 
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate', '0.0.5'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

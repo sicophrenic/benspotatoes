@@ -7,7 +7,7 @@
 			%th Ratings
 			%th Locations
 			%th Qualities
-			%th
+			%th Total Movies: #{@total}
 	%tbody
 		= form_tag movies_path, :method => :get, :id => 'filters_form' do
 			%tr
@@ -29,6 +29,8 @@
 				%th
 					= text_field_tag 'search', @search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
 					= submit_tag 'Filter', :id => 'filters_submit', :class => "btn btn-inverse"
+
+= will_paginate
 
 %table#movies.table.table-bordered.table-condensed
 	%thead
@@ -55,4 +57,12 @@
 				%td{ :id => @hilite }= movie.quality
 				%td= movie.release_date.strftime("%F")
 
-= button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
+.row
+	.span8
+		%br
+		= button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
+	.span4
+		Show Per Page:
+		= form_tag movies_path, :method => :get, :id => 'paginate_form', :class => 'form-horizontal' do
+			= select_tag :per_page, options_for_select([10,20,30,'All'], @per_page), :class => 'span3'
+			= submit_tag 'Go', :id => 'paginate_form', :class => 'btn btn-inverse'
