@@ -1,5 +1,7 @@
 %h1 Edit Existing Movie "#{@movie.title}"
 
+= render :partial => "shared/flash_messages", :locals => { :flash => flash }
+
 = form_tag movie_path(@movie), :method => :put do
 
 	= label :movie, :title, 'Title'
@@ -15,9 +17,7 @@
 	= select :movie, :location, @all_locations
 
 	= label :movie, :quality, 'Quality'
-	- @all_qualities.each do |quality|
-		= quality
-		= check_box_tag "quality[#{quality}]", "1", @movie.quality.include?(quality)
+	= select :movie, :quality, @all_qualities
 
 	= label :movie, :release_date, 'Released On'
 	= date_select :movie, :release_date

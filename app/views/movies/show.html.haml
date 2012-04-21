@@ -1,5 +1,7 @@
 %h2 Details About Movie "#{@movie.title}"
 
+= render :partial => "shared/flash_messages", :locals => { :flash => flash }
+
 %dl#details.dl-horizontal
 	%dt
 		Directed by:

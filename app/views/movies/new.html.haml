@@ -1,5 +1,7 @@
 %h1 Create New Movie
 
+= render :partial => "shared/flash_messages", :locals => { :flash => flash }
+
 = form_tag movies_path do
 
 	= label :movie, :title, 'Title'
@@ -15,9 +17,7 @@
 	= select :movie, :location, @all_locations
 
 	= label :movie, :quality, 'Quality'
-	- @all_qualities.each do |quality|
-		= quality
-		= check_box_tag "quality[#{quality}]"
+	= select :movie, :quality, @all_qualities
 
 	= label :movie, :release_date, 'Released On'
 	= date_select :movie, :release_date

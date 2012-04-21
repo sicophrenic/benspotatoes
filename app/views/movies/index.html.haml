@@ -30,7 +30,10 @@
 					= text_field_tag 'search', @search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
 					= submit_tag 'Filter', :id => 'filters_submit', :class => "btn btn-inverse"
 
-= will_paginate
+= render :partial => "shared/flash_messages", :locals => { :flash => flash }
+
+- if @paginate
+	= will_paginate
 
 %table#movies.table.table-bordered.table-condensed
 	%thead
@@ -48,6 +51,7 @@
 																																					:locations => @selected_locations,
 																																					:qualities => @selected_qualities)
 	%tbody
+		%tr
 		- @movies.each do |movie|
 			%tr
 				%td= link_to "#{movie.title}", movie_path(movie)

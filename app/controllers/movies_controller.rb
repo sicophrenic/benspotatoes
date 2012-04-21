@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
     
     if params[:nuke]
       session.clear
+        flash[:notice] = "Session reset."
         redirect_to movies_path()
     end
     
@@ -47,8 +48,9 @@ class MoviesController < ApplicationController
     end
     
     @per_page = params[:per_page] || session[:per_page] || 20
+    @paginate = true
     if @per_page == "All"
-      @per_page = Movie.count
+      @paginate = false
     end
     if params[:per_page] != session[:per_page]
       session[:per_page] = params[:per_page]
@@ -74,22 +76,44 @@ class MoviesController < ApplicationController
                               :per_page => @per_page)
     end
     
-    if @search != ''
-      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                  location IN (?) AND
-                                                  quality IN (?) AND
-                                                  lower(title) LIKE (?)",  @selected_ratings.keys,
-                                                                    @selected_locations.keys,
-                                                                    @selected_qualities.keys,
-                                                                    "%#{@search.downcase}%"],
-                                  :order => orderby).paginate(page: params[:page], per_page: @per_page)
+    if @paginate
+      if @search != ''
+        flash[:notice] = %Q(Search for "#{@search}")
+        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                    location IN (?) AND
+                                                    quality IN (?) AND
+                                                    lower(title) LIKE (?)",  @selected_ratings.keys,
+                                                                      @selected_locations.keys,
+                                                                      @selected_qualities.keys,
+                                                                      "%#{@search.downcase}%"],
+                                    :order => orderby).paginate(page: params[:page], per_page: @per_page)
+      else
+        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                    location IN (?) AND
+                                                    quality IN (?)",  @selected_ratings.keys,
+                                                                      @selected_locations.keys,
+                                                                      @selected_qualities.keys],
+                                    :order => orderby).paginate(page: params[:page], per_page: @per_page)
+      end
     else
-      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                  location IN (?) AND
-                                                  quality IN (?)",  @selected_ratings.keys,
-                                                                    @selected_locations.keys,
-                                                                    @selected_qualities.keys],
-                                  :order => orderby).paginate(page: params[:page], per_page: @per_page)
+      if @search != ''
+        flash[:notice] = %Q(Search for "#{@search}")
+        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                    location IN (?) AND
+                                                    quality IN (?) AND
+                                                    lower(title) LIKE (?)",  @selected_ratings.keys,
+                                                                      @selected_locations.keys,
+                                                                      @selected_qualities.keys,
+                                                                      "%#{@search.downcase}%"],
+                                    :order => orderby)
+      else
+        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                    location IN (?) AND
+                                                    quality IN (?)",  @selected_ratings.keys,
+                                                                      @selected_locations.keys,
+                                                                      @selected_qualities.keys],
+                                    :order => orderby)
+      end
     end
   end
 
@@ -111,24 +135,35 @@ class MoviesController < ApplicationController
   end
 
   def create
-    params[:movie][:quality] = params[:quality].keys.join(' ')
-    @movie = Movie.create!(params[:movie])
-    flash[:notice] = "#{@movie.title} was successfully created."
-    redirect_to movies_path
+    @movie = Movie.new(params[:movie])
+    print @movie
+    print @movie
+    print @movie
+    print @movie
+    if @movie.save
+      flash[:success] = "#{@movie.title} was successfully created."
+      redirect_to movies_path
+    else
+      flash[:error] = "#{@movie.title} was not successfully created: #{@movie.errors.full_messages.first}."
+      redirect_to new_movie_path
+    end
   end
 
   def update
     @movie = Movie.find(params[:id])
-    params[:movie][:quality] = params[:quality].keys.join(' ')
-    @movie.update_attributes!(params[:movie])
-    flash[:notice] = "#{@movie.title} was successfully updated."
-    redirect_to movie_path(@movie)
+    if @movie.update_attributes(params[:movie])
+      flash[:success] = "#{@movie.title} was successfully updated."
+      redirect_to movie_path(@movie)
+    else
+      flash[:error] = "#{@movie.title} was not successfully updated: #{@movie.errors.full_messages.first}."
+      redirect_to movie_path(@movie)
+    end
   end
   
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
-    flash[:notice] = "#{@movie.title} was successfully deleted."
+    flash[:success] = "#{@movie.title} was successfully deleted."
     redirect_to movies_path
   end
 end
