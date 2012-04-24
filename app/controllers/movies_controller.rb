@@ -78,7 +78,7 @@ class MoviesController < ApplicationController
     
     if @paginate
       if @search != ''
-        flash[:notice] = %Q(Search for "#{@search}")
+        flash.now[:notice] = %Q(Search for "#{@search}")
         @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
                                                     location IN (?) AND
                                                     quality IN (?) AND
@@ -97,7 +97,7 @@ class MoviesController < ApplicationController
       end
     else
       if @search != ''
-        flash[:notice] = %Q(Search for "#{@search}")
+        flash.now[:notice] = %Q(Search for "#{@search}")
         @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
                                                     location IN (?) AND
                                                     quality IN (?) AND
