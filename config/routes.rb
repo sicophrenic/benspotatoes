@@ -1,8 +1,5 @@
 Benspotatoes::Application.routes.draw do
-  # get "pages/home"
-  # get "pages/about"
   match '/about', :to => 'pages#about'
-  # get "pages/todo"
   match '/todo', :to => 'pages#todo'
 
   # The priority is based upon order of creation:
