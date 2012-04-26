@@ -1,0 +1,28 @@
+%table#filters.table
+	%thead
+		%tr
+			%th Ratings
+			%th Locations
+			%th Qualities
+			%th Total Movies: #{@total}
+	%tbody
+		= form_tag movies_path, :method => :get, :id => 'filters_form' do
+			%tr
+				%th
+					- @all_ratings.each do |rating|
+						= rating
+						= check_box_tag "ratings[#{rating}]", 1,
+							@selected_ratings.include?(rating)
+				%th
+					- @all_locations.each do |location|
+						= location
+						= check_box_tag "locations[#{location}]", 1,
+						 	@selected_locations.include?(location)
+				%th
+					- @all_qualities.each do |quality|
+						= quality
+						= check_box_tag "qualities[#{quality}]", 1,
+							@selected_qualities.include?(quality)
+				%th
+					= text_field_tag 'search', @search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
+					= submit_tag 'Filter', :id => 'filters_submit', :class => "btn btn-inverse"
