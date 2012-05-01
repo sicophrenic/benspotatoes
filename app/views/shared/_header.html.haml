@@ -7,9 +7,13 @@
 				%span.icon-bar
 			%a.brand{ :href => root_path } Ben's Potatoes
 			.nav-collapse
+				= form_tag movies_path, :method => :get, :class => 'navbar-search pull-left' do
+					= text_field_tag 'search', @search, :placeholder => 'Do I Have This Potato?'
 				%ul.nav.pull-right
 					%li
 						%a{ :href => movies_path } Movies
+					%li
+						%a{ :href => search_path } Search
 					%li
 						%a{ :href => about_path } About
 					%li

@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def todo
   end
+  
+  def search
+  end
 end

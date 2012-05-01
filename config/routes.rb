@@ -1,4 +1,5 @@
 Benspotatoes::Application.routes.draw do
+  match '/search', :to => 'pages#search'
   match '/about', :to => 'pages#about'
   match '/todo', :to => 'pages#todo'
 
