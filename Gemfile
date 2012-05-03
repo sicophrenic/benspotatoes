@@ -12,7 +12,7 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 	gem 'therubyracer'
-	gem 'twitter-bootstrap-rails', "~> 2.0rc0"
+	gem 'twitter-bootstrap-rails'
 	gem 'less'
 end
 
