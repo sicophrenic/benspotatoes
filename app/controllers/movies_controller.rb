@@ -8,9 +8,8 @@ class MoviesController < ApplicationController
         redirect_to movies_path()
     end
     
-    @all_ratings = Movie.all_ratings
     @ratings_hash = {}
-    @all_ratings.each do |rating|
+    Movie.all_ratings.each do |rating|
       @ratings_hash[rating] = "1"
     end
     @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
@@ -19,9 +18,8 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
-    @all_locations = Movie.all_locations
     @locations_hash = {}
-    @all_locations.each do |location|
+    Movie.all_locations.each do |location|
       @locations_hash[location] = "1"
     end
     @selected_locations = params[:locations] || session[:locations] || @locations_hash
@@ -30,9 +28,8 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
-    @all_qualities = Movie.all_qualities
     @qualities_hash = {}
-    @all_qualities.each do |quality|
+    Movie.all_qualities.each do |quality|
       @qualities_hash[quality] = "1"
     end
     @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
@@ -41,9 +38,15 @@ class MoviesController < ApplicationController
       @restore = true
     end
 
-    @search = params[:search] || session[:search] || ''
-    if params[:search] != session[:search] && params[:search] != ''
-      session[:search] = params[:search]
+    @title_search = params[:title_search] || session[:title_search] || ''
+    if params[:title_search] != session[:title_search] && params[:title_search] != ''
+      session[:title_search] = params[:title_search]
+      @restore = true
+    end
+    
+    @director_search = params[:director_search] || session[:director_search] || ''
+    if params[:director_search] != session[:director_search] && params[:director_search] != ''
+      session[:director_search] = params[:director_search]
       @restore = true
     end
     
@@ -72,48 +75,35 @@ class MoviesController < ApplicationController
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,
                               :sort => @sort,
-                              :search => @search,
+                              :title_search => @title_search,
+                              :director_search => @director_search,
                               :per_page => @per_page)
     end
     
     if @paginate
-      if @search != ''
-        # flash.now[:notice] = %Q(Search for "#{@search}")
-        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                    location IN (?) AND
-                                                    quality IN (?) AND
-                                                    lower(title) LIKE (?)",  @selected_ratings.keys,
-                                                                      @selected_locations.keys,
-                                                                      @selected_qualities.keys,
-                                                                      "%#{@search.downcase}%"],
-                                    :order => orderby).paginate(page: params[:page], per_page: @per_page)
-      else
-        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                    location IN (?) AND
-                                                    quality IN (?)",  @selected_ratings.keys,
-                                                                      @selected_locations.keys,
-                                                                      @selected_qualities.keys],
-                                    :order => orderby).paginate(page: params[:page], per_page: @per_page)
-      end
+      # flash.now[:notice] = %Q(title_search for "#{@title_search}")
+      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                  location IN (?) AND
+                                                  quality IN (?) AND
+                                                  lower(title) LIKE (?) AND
+                                                  lower(director) LIKE (?)",  @selected_ratings.keys,
+                                                                    @selected_locations.keys,
+                                                                    @selected_qualities.keys,
+                                                                    "%#{@title_search.downcase}%",
+                                                                    "%#{@director_search.downcase}%"],
+                                  :order => orderby).paginate(page: params[:page], per_page: @per_page)
     else
-      if @search != ''
-        # flash.now[:notice] = %Q(Search for "#{@search}")
-        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                    location IN (?) AND
-                                                    quality IN (?) AND
-                                                    lower(title) LIKE (?)",  @selected_ratings.keys,
-                                                                      @selected_locations.keys,
-                                                                      @selected_qualities.keys,
-                                                                      "%#{@search.downcase}%"],
-                                    :order => orderby)
-      else
-        @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                    location IN (?) AND
-                                                    quality IN (?)",  @selected_ratings.keys,
-                                                                      @selected_locations.keys,
-                                                                      @selected_qualities.keys],
-                                    :order => orderby)
-      end
+      # flash.now[:notice] = %Q(title_search for "#{@title_search}")
+      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                  location IN (?) AND
+                                                  quality IN (?) AND
+                                                  lower(title) LIKE (?) AND
+                                                  lower(director) LIKE (?)",  @selected_ratings.keys,
+                                                                    @selected_locations.keys,
+                                                                    @selected_qualities.keys,
+                                                                    "%#{@title_search.downcase}%",
+                                                                    "%#{@director_search.downcase}%"],
+                                  :order => orderby)
     end
   end
 
@@ -122,24 +112,14 @@ class MoviesController < ApplicationController
   end
 
   def new
-    @all_ratings = Movie.all_ratings
-    @all_qualities = Movie.all_qualities
-    @all_locations = Movie.all_locations
   end
 
   def edit
     @movie = Movie.find(params[:id])
-    @all_ratings = Movie.all_ratings
-    @all_qualities = Movie.all_qualities
-    @all_locations = Movie.all_locations
   end
 
   def create
     @movie = Movie.new(params[:movie])
-    print @movie
-    print @movie
-    print @movie
-    print @movie
     if @movie.save
       flash[:success] = "#{@movie.title} was successfully created."
       redirect_to movies_path

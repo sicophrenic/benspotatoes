@@ -8,7 +8,7 @@
 			%a.brand{ :href => root_path } Ben's Potatoes
 			.nav-collapse
 				= form_tag movies_path, :method => :get, :class => 'navbar-search pull-left' do
-					= text_field_tag 'search', @search, :placeholder => 'Do I Have This Potato?'
+					= text_field_tag 'titlesearch', @title_search, :placeholder => 'Do I Have This Potato?'
 				%ul.nav.pull-right
 					%li
 						%a{ :href => movies_path } Movies

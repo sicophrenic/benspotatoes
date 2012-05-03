@@ -1,4 +1,3 @@
-(ADVANCED) SEARCH HERE
 %h1 Advanced Search:
 
 = form_tag movies_path, :method => :get, :class => 'form-horizontal' do
@@ -6,11 +5,11 @@
 		.control-group
 			= label_tag 'title', 'Title:', :class => 'control-label', :for => 'input01'
 			.controls
-				= text_field_tag 'titlesearch', @title_search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?', :id => 'input01'
+				= text_field_tag 'title_search', @title_search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?', :id => 'input01'
 		.control-group
 			= label_tag 'director', 'Director:', :class => 'control-label', :for => 'input02'
 			.controls
-				= text_field_tag 'directorsearch', @director_search, :class => 'input-medium search-query', :placeholder => 'Who Directed This Potato?', :id => 'input02'
+				= text_field_tag 'director_search', @director_search, :class => 'input-medium search-query', :placeholder => 'Who Directed This Potato?', :id => 'input02'
 		.control-group
 			= label_tag 'rating', 'Ratings:', :class => 'control-label'
 			.controls
@@ -29,14 +28,17 @@
 				- Movie.all_qualities.each do |quality|
 					= label_tag "#{quality}", quality, :class => 'checkbox inline'
 					= check_box_tag "qualities[#{quality}]", 1, true
-		.control-group
-			= label_tag 'released', 'Release Date:', :class => 'control-label'
-			.controls
-				Between
-				= select_date
-				%br
-				and
-				= select_date
+		.form-actions
+			= button_tag 'Search', :type => 'submit', :class => 'btn btn-inverse'
+			= button_tag 'Cancel', :type => 'button', :class => 'btn', :onclick => "window.location.href='/movies'"
+/		.control-group
+/			= label_tag 'released', 'Release Date:', :class => 'control-label'
+/			.controls
+/				Between
+/				= select_date
+/				%br
+/				and
+/				= select_date
 
 %p Title Search
 %p Director Search

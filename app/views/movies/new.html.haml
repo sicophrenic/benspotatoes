@@ -11,13 +11,13 @@
 	= text_field :movie, 'director'
 
 	= label :movie, :rating, 'Rating'
-	= select :movie, :rating, @all_ratings
+	= select :movie, :rating, Movie.all_ratings
 
 	= label :movie, :location, 'Location'
-	= select :movie, :location, @all_locations
+	= select :movie, :location, Movie.all_locations
 
 	= label :movie, :quality, 'Quality'
-	= select :movie, :quality, @all_qualities
+	= select :movie, :quality, Movie.all_qualities
 
 	= label :movie, :release_date, 'Released On'
 	= date_select :movie, :release_date
