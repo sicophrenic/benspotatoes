@@ -27,7 +27,7 @@ POTATOES = [
   {:title => 'Bond: Die Another Day', :director => 'Lee Tamahori', :rating => 'PG-13', :location => 'F', :quality => '720p', :release_date => '22-Nov-2002'},
   {:title => 'Bond: Dr. No', :director => 'Terence Young', :rating => 'PG', :location => 'F', :quality => '720p', :release_date => '8-May-1963'},
   {:title => 'Bond: For Your Eyes Only', :director => 'John Glen', :rating => 'PG', :location => 'F', :quality => '720p', :release_date => '26-Jun-1981'},
-  {:title => 'Bond: From Russia with Love', :director => 'Terence Young', :rating => 'GP', :location => 'F', :quality => '720p', :release_date => '8-Apr-1964'},
+  {:title => 'Bond: From Russia with Love', :director => 'Terence Young', :rating => 'PG', :location => 'F', :quality => '720p', :release_date => '8-Apr-1964'},
   {:title => 'Bond: Goldeneye', :director => 'Martin Campbell', :rating => 'PG-13', :location => 'F', :quality => '720p', :release_date => '17-Nov-1995'},
   {:title => 'Bond: Goldfinger', :director => 'Guy Hamilton', :rating => 'PG', :location => 'F', :quality => '720p', :release_date => '22-Dec-1964'},
   {:title => 'Bond: License to Kill', :director => 'John Glen', :rating => 'PG-13', :location => 'F', :quality => '720p', :release_date => '14-Jul-1989'},
@@ -193,5 +193,5 @@ POTATOES = [
 ]
 
 POTATOES.each do |movie|
-  Movie.create(movie)
+  Movie.create!(movie)
 end

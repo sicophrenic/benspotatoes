@@ -23,7 +23,7 @@ class Movie < ActiveRecord::Base
   validates :quality, :presence => true
 
   def self.all_ratings
-    %w(G PG PG-13 NC-17 R)
+    %w(G PG PG-13 M R)
   end
   
   def self.all_qualities
@@ -32,5 +32,9 @@ class Movie < ActiveRecord::Base
   
   def self.all_locations
     %w(E F G H K)
+  end
+  
+  def self.earliest_movie
+    Movie.find(:all, :order => :release_date).first.release_date
   end
 end

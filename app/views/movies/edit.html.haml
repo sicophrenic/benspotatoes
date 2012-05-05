@@ -1,6 +1,6 @@
 %h1 Edit Existing Movie "#{Movie.movie.title}"
 
-= render :partial => "flash", :locals => { :flash => flash }
+= render :partial => "shared/flash", :locals => { :flash => flash }
 
 = form_tag movie_path(Movie.movie), :method => :put do
 

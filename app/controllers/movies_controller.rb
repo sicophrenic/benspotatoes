@@ -1,11 +1,10 @@
 class MoviesController < ApplicationController  
-  def index
-    @total = Movie.count
-    
+  def index    
     if params[:nuke]
       session.clear
-        # flash[:notice] = "Session reset."
-        redirect_to movies_path()
+      # flash[:notice] = "Session reset."
+      redirect_to movies_path
+      return
     end
     
     @ratings_hash = {}
@@ -50,6 +49,29 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
+    @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year}
+    if params[:start] != session[:start] && params[:start] != {:year => Movie.earliest_movie.year}
+      session[:start] = params[:start]
+      @restore = true
+    end
+    @start_search = Date.new(@start_year[:year].to_i)
+    
+    @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
+    if params[:end] != session[:end] && params[:end] != {:year => Date.today.year+1}
+      session[:end] = params[:end]
+      @restore = true
+    end
+    @end_search = Date.new(@end_year[:year].to_i)
+    
+    if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
+      params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
+      params[:end] = session[:end] = {:year => Date.today.year+1}
+      flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
+      puts params
+      redirect_to search_path
+      return
+    end
+    
     @per_page = params[:per_page] || session[:per_page] || 20
     @paginate = true
     if @per_page == "All"
@@ -77,7 +99,18 @@ class MoviesController < ApplicationController
                               :sort => @sort,
                               :title_search => @title_search,
                               :director_search => @director_search,
+                              :start => @start_year,
+                              :end => @end_year,
                               :per_page => @per_page)
+      return
+    end
+    
+    if @selected_ratings.count != Movie.all_ratings.count ||
+        @selected_locations.count != Movie.all_locations.count ||
+        @selected_qualities.count != Movie.all_qualities.count ||
+        @title_search || @director_search ||
+        @start_year || @end_year
+      @check_count = true
     end
     
     if @paginate
@@ -86,11 +119,15 @@ class MoviesController < ApplicationController
                                                   location IN (?) AND
                                                   quality IN (?) AND
                                                   lower(title) LIKE (?) AND
-                                                  lower(director) LIKE (?)",  @selected_ratings.keys,
+                                                  lower(director) LIKE (?) AND
+                                                  release_date >= (?) AND
+                                                  release_date <= (?)",  @selected_ratings.keys,
                                                                     @selected_locations.keys,
                                                                     @selected_qualities.keys,
                                                                     "%#{@title_search.downcase}%",
-                                                                    "%#{@director_search.downcase}%"],
+                                                                    "%#{@director_search.downcase}%",
+                                                                    @start_search,
+                                                                    @end_search],
                                   :order => orderby).paginate(page: params[:page], per_page: @per_page)
     else
       # flash.now[:notice] = %Q(title_search for "#{@title_search}")
@@ -98,11 +135,15 @@ class MoviesController < ApplicationController
                                                   location IN (?) AND
                                                   quality IN (?) AND
                                                   lower(title) LIKE (?) AND
-                                                  lower(director) LIKE (?)",  @selected_ratings.keys,
+                                                  lower(director) LIKE (?) AND
+                                                  release_date >= (?) AND
+                                                  release_date <= (?)",  @selected_ratings.keys,
                                                                     @selected_locations.keys,
                                                                     @selected_qualities.keys,
                                                                     "%#{@title_search.downcase}%",
-                                                                    "%#{@director_search.downcase}%"],
+                                                                    "%#{@director_search.downcase}%",
+                                                                    @start_search,
+                                                                    @end_search],
                                   :order => orderby)
     end
   end

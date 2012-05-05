@@ -2,7 +2,7 @@
 	%h1= link_to "All Movies (Click to Reset)", movies_path({:nuke=>"nuke"})
 
 = render :partial => "filter"
-= render :partial => "flash", :locals => { :flash => flash }
+= render :partial => "shared/flash", :locals => { :flash => flash }
 = render :partial => "content"
 
 .row

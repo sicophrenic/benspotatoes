@@ -1,4 +1,7 @@
+= render :partial => "shared/flash", :locals => { :flash => flash }
+
 %h1 Advanced Search:
+%br
 
 = form_tag movies_path, :method => :get, :class => 'form-horizontal' do
 	%fieldset
@@ -28,14 +31,19 @@
 				- Movie.all_qualities.each do |quality|
 					= label_tag "#{quality}", quality, :class => 'checkbox inline'
 					= check_box_tag "qualities[#{quality}]", 1, true
+		.control-group
+			= label_tag 'released', 'Release Date:', :class => 'control-label'
+			.controls
+				Between
+				= select_year Movie.earliest_movie.year,
+									:prefix => :start,
+									:start_year => Movie.earliest_movie.year,
+									:end_year => Date.today.year
+				and
+				= select_year Date.today.year,
+									:prefix => :end,
+									:start_year => Movie.earliest_movie.year,
+									:end_year => Date.today.year
 		.form-actions
 			= button_tag 'Search', :type => 'submit', :class => 'btn btn-inverse'
 			= button_tag 'Cancel', :type => 'button', :class => 'btn', :onclick => "window.location.href='/movies'"
-/		.control-group
-/			= label_tag 'released', 'Release Date:', :class => 'control-label'
-/			.controls
-/				Between
-/				= select_date
-/				%br
-/				and
-/				= select_date

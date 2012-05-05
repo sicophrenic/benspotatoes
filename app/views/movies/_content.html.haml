@@ -1,18 +1,30 @@
 %table#movies.table.table-bordered.table-condensed
 	%thead
 		%tr
-			%th{:class => @title_header}= link_to 'Title', movies_path(:sort => 'title',
+			%th{:class => @title_header}= link_to 'Title',
+															movies_path(:sort => 'title',
 																				:ratings => @selected_ratings,
 																				:locations => @selected_locations,
-																				:qualities => @selected_qualities)
+																				:qualities => @selected_qualities,
+																				:title_search => @title_search,
+																				:director_search => @director_search,
+																				:start => @start_year,
+																				:end => @end_year,
+																				:per_page => @per_page)
 			%th Director
 			%th Rating
 			%th Location
 			%th Quality
-			%th{:class => @release_header}= link_to 'Release Date', movies_path(:sort => 'release_date',
-																																					:ratings => @selected_ratings,
-																																					:locations => @selected_locations,
-																																					:qualities => @selected_qualities)
+			%th{:class => @release_header}= link_to 'Release Date',
+															movies_path(:sort => 'release_date',
+																					:ratings => @selected_ratings,
+																					:locations => @selected_locations,
+																					:qualities => @selected_qualities,
+																					:title_search => @title_search,
+																					:director_search => @director_search,
+																					:start => @start_year,
+																					:end => @end_year,
+																					:per_page => @per_page)
 	%tbody#movielist
 	- @movies.each do |movie|
 		%tr
