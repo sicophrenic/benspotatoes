@@ -2,7 +2,8 @@
 	%thead
 		%tr
 			%th{:class => @title_header}= link_to 'Title',
-															movies_path(:sort => 'title',
+														movies_path(:sort => 'title',
+																				:viewby => @viewby,
 																				:ratings => @selected_ratings,
 																				:locations => @selected_locations,
 																				:qualities => @selected_qualities,
@@ -17,6 +18,7 @@
 			%th Quality
 			%th{:class => @release_header}= link_to 'Release Date',
 															movies_path(:sort => 'release_date',
+																					:viewby => @viewby,
 																					:ratings => @selected_ratings,
 																					:locations => @selected_locations,
 																					:qualities => @selected_qualities,

@@ -1,6 +1,9 @@
 class MoviesController < ApplicationController  
   def index    
     if params[:nuke]
+      if Rails.env.development?
+        puts "SESSION NUKE"
+      end
       session.clear
       # flash[:notice] = "Session reset."
       redirect_to movies_path
@@ -49,15 +52,15 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
-    @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year}
-    if params[:start] != session[:start] && params[:start] != {:year => Movie.earliest_movie.year}
+    @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
+    if params[:start] != session[:start] && params[:start][:year] == Movie.earliest_movie.year.to_i
       session[:start] = params[:start]
       @restore = true
     end
     @start_search = Date.new(@start_year[:year].to_i,1,1)
     
     @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
-    if params[:end] != session[:end] && params[:end] != {:year => Date.today.year+1}
+    if params[:end] != session[:end] && params[:end][:year] == Date.today.year+1
       session[:end] = params[:end]
       @restore = true
     end
@@ -77,39 +80,55 @@ class MoviesController < ApplicationController
     if @per_page == "All"
       @paginate = false
     end
-    if params[:per_page] != session[:per_page]
+    if params[:per_page] != session[:per_page] && params[:per_page].to_i != 20
       session[:per_page] = params[:per_page]
       @restore = true
     end
     
+    if Rails.env.development?
+      puts "BEFORE"
+      puts "PARAMS[:sort] #{params[:sort]}, SESSION[:sort] #{session[:sort]}"
+      puts "PARAMS[:viewby] #{params[:viewby]}, SESSION[:viewby] #{session[:viewby]}"
+    end
     @sort = params[:sort] || session[:sort] || 'title'
-    viewby = 'ASC'
+    @viewby = params[:viewby] || session[:viewby] || 'ASC'
     case @sort
     when 'title'
-      orderby = :title
       @title_header = 'hilite'
-      if params[:sort] == session[:sort] && params[:sort]
-        viewby = 'DESC'
-      else
-        session[:sort] = params[:sort]
-        viewby = 'ASC'
-      end
     when 'release_date'
-      orderby = :release_date
       @release_header = 'hilite'
-      if params[:sort] == session[:sort] && params[:sort]
-        viewby = 'DESC'
-      else
-        session[:sort] = params[:sort]
-        viewby = 'ASC'
-      end
+    end
+    case @viewby
+    when 'ASC'
+      @viewby = 'DESC'
+      orderby = 'ASC'
+    when 'DESC'
+      @viewby = 'ASC'
+      orderby = 'DESC'
+    end
+    if params[:sort] != session[:sort] && session[:sort]
+      @viewby = 'DESC'
+      orderby = 'ASC'
+    end
+    if params[:sort] != session[:sort] && params[:sort]
+      session[:sort] = params[:sort]
+    end
+    if params[:viewby] != session[:viewby] && params[:viewby]
+      session[:viewby] = params[:viewby]
+    end
+    if Rails.env.development?
+      puts "AFTER"
+      puts "PARAMS[:sort] #{params[:sort]}, SESSION[:sort] #{session[:sort]}"
+      puts "PARAMS[:viewby] #{params[:viewby]}, SESSION[:viewby] #{session[:viewby]}"
     end
     
     if @restore
+      puts "RESTORE"
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,
                               :sort => @sort,
+                              :viewby => @viewby,
                               :title_search => @title_search,
                               :director_search => @director_search,
                               :start => @start_year,
@@ -141,7 +160,7 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => "#{orderby} #{viewby}")
+                                  :order => "#{@sort} #{orderby}")
       @count = @movies.count
       @movies = @movies.paginate(page: params[:page], per_page: @per_page)
     else
@@ -159,7 +178,7 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => "#{orderby} #{viewby}")
+                                  :order => "#{@sort} #{orderby}")
       @count = Movie.count
     end
   end
