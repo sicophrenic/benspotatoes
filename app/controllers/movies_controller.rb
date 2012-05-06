@@ -18,6 +18,9 @@ class MoviesController < ApplicationController
     if params[:ratings] != session[:ratings] and @selected_ratings != @ratings_hash
       session[:ratings] = params[:ratings]
       @restore = true
+      if Rails.env.development?
+        puts "RATINGS RESTORE"
+      end
     end
     
     @locations_hash = {}
@@ -28,6 +31,9 @@ class MoviesController < ApplicationController
     if params[:locations] != session[:locations] and @selected_locations != @locations_hash
       session[:locations] = params[:locations]
       @restore = true
+      if Rails.env.development?
+        puts "LOCATIONS RESTORE"
+      end
     end
     
     @qualities_hash = {}
@@ -35,27 +41,42 @@ class MoviesController < ApplicationController
       @qualities_hash[quality] = "1"
     end
     @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
-    if params[:qualities] != session[:qualities] and @selected_qualities != @qualities_hash
+    if params[:qualities]
+      session[:qualities] = params[:qualities]
+    end
+    if !params[:qualities] and session[:qualities]
       session[:qualities] = params[:qualities]
       @restore = true
+      if Rails.env.development?
+        puts "QUALITIES RESTORE"
+      end
     end
 
     @title_search = params[:title_search] || session[:title_search] || ''
-    if params[:title_search] != session[:title_search] && params[:title_search] != ''
+    if params[:title_search] != session[:title_search] and params[:title_search] != ''
       session[:title_search] = params[:title_search]
       @restore = true
+      if Rails.env.development?
+        puts "TITLESEARCH RESTORE"
+      end
     end
     
     @director_search = params[:director_search] || session[:director_search] || ''
     if params[:director_search] != session[:director_search] && params[:director_search] != ''
       session[:director_search] = params[:director_search]
       @restore = true
+      if Rails.env.development?
+        puts "DIRECTORSEARCH RESTORE"
+      end
     end
     
     @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
     if params[:start] != session[:start] && params[:start][:year] == Movie.earliest_movie.year.to_i
       session[:start] = params[:start]
       @restore = true
+      if Rails.env.development?
+        puts "STARTYEAR RESTORE"
+      end
     end
     @start_search = Date.new(@start_year[:year].to_i,1,1)
     
@@ -63,6 +84,9 @@ class MoviesController < ApplicationController
     if params[:end] != session[:end] && params[:end][:year] == Date.today.year+1
       session[:end] = params[:end]
       @restore = true
+      if Rails.env.development?
+        puts "ENDYEAR RESTORE"
+      end
     end
     @end_search = Date.new(@end_year[:year].to_i,12,31)
     
@@ -83,18 +107,27 @@ class MoviesController < ApplicationController
     if params[:per_page] != session[:per_page] && params[:per_page].to_i != 20
       session[:per_page] = params[:per_page]
       @restore = true
+      if Rails.env.development?
+        puts "PERPAGE RESTORE"
+      end
     end
     
-    @sort = params[:sort] || session[:sort] || 'title'
-    @viewby = params[:viewby] || session[:viewby] || 'ASC'
+    @sort = params[:sort] || session[:sort] || ''
+    @viewby = params[:viewby] || session[:viewby] || ''
     case @sort
     when 'title'
+      @title_header = 'hilite'
+    when ''
+      @sort = 'title'
       @title_header = 'hilite'
     when 'release_date'
       @release_header = 'hilite'
     end
     case @viewby
     when 'ASC'
+      @viewby = 'DESC'
+      orderby = 'ASC'
+    when ''
       @viewby = 'DESC'
       orderby = 'ASC'
     when 'DESC'
@@ -114,6 +147,8 @@ class MoviesController < ApplicationController
     
     if @restore
       puts "RESTORE"
+      @sort = session[:sort]
+      @viewby = session[:viewby]
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,

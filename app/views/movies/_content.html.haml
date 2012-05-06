@@ -29,12 +29,19 @@
 																					:per_page => @per_page)
 	%tbody#movielist
 	- @movies.each do |movie|
+		- case movie.quality
+		- when "480p"
+			- rowclass = "low"
+		- when "720p"
+			- rowclass = "med"
+		- when "1080p"
+			- rowclass = "high"
 		%tr
 			%td= link_to "#{movie.title}", movie_path(movie)
 			%td= movie.director
 			%td= movie.rating
 			%td= movie.location
-			%td{ :id => @hilite }= movie.quality
+			%td{ :class => rowclass }= movie.quality
 			%td= movie.release_date.strftime("%F")
 			
 - if @paginate
