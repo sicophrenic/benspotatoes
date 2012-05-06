@@ -100,7 +100,6 @@ class MoviesController < ApplicationController
       params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
       params[:end] = session[:end] = {:year => Date.today.year+1}
       flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
-      puts params
       redirect_to search_path
       return
     end
