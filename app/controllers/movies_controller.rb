@@ -15,7 +15,10 @@ class MoviesController < ApplicationController
       @ratings_hash[rating] = "1"
     end
     @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
-    if params[:ratings] != session[:ratings] and @selected_ratings != @ratings_hash
+    if params[:ratings]
+      session[:ratings] = params[:ratings]
+    end
+    if !params[:ratings] and session[:ratings]
       session[:ratings] = params[:ratings]
       @restore = true
       if Rails.env.development?
@@ -28,7 +31,10 @@ class MoviesController < ApplicationController
       @locations_hash[location] = "1"
     end
     @selected_locations = params[:locations] || session[:locations] || @locations_hash
-    if params[:locations] != session[:locations] and @selected_locations != @locations_hash
+    if params[:locations]
+      session[:locations] = params[:locations]
+    end
+    if !params[:locations] and session[:locations]
       session[:locations] = params[:locations]
       @restore = true
       if Rails.env.development?
