@@ -85,11 +85,6 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
-    if Rails.env.development?
-      puts "BEFORE"
-      puts "PARAMS[:sort] #{params[:sort]}, SESSION[:sort] #{session[:sort]}"
-      puts "PARAMS[:viewby] #{params[:viewby]}, SESSION[:viewby] #{session[:viewby]}"
-    end
     @sort = params[:sort] || session[:sort] || 'title'
     @viewby = params[:viewby] || session[:viewby] || 'ASC'
     case @sort
@@ -115,11 +110,6 @@ class MoviesController < ApplicationController
     end
     if params[:viewby] != session[:viewby] && params[:viewby]
       session[:viewby] = params[:viewby]
-    end
-    if Rails.env.development?
-      puts "AFTER"
-      puts "PARAMS[:sort] #{params[:sort]}, SESSION[:sort] #{session[:sort]}"
-      puts "PARAMS[:viewby] #{params[:viewby]}, SESSION[:viewby] #{session[:viewby]}"
     end
     
     if @restore
