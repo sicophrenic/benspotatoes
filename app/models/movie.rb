@@ -37,4 +37,5 @@ class Movie < ActiveRecord::Base
   def self.earliest_movie
     Movie.find(:all, :order => :release_date).first.release_date
   end
+  
 end

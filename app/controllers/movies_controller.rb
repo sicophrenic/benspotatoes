@@ -54,14 +54,14 @@ class MoviesController < ApplicationController
       session[:start] = params[:start]
       @restore = true
     end
-    @start_search = Date.new(@start_year[:year].to_i)
+    @start_search = Date.new(@start_year[:year].to_i,1,1)
     
     @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
     if params[:end] != session[:end] && params[:end] != {:year => Date.today.year+1}
       session[:end] = params[:end]
       @restore = true
     end
-    @end_search = Date.new(@end_year[:year].to_i)
+    @end_search = Date.new(@end_year[:year].to_i,12,31)
     
     if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
       params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
@@ -82,14 +82,27 @@ class MoviesController < ApplicationController
       @restore = true
     end
     
-    @sort = params[:sort] || session[:sort]
+    @sort = params[:sort] || session[:sort] || 'title'
+    viewby = 'ASC'
     case @sort
     when 'title'
       orderby = :title
       @title_header = 'hilite'
+      if params[:sort] == session[:sort] && params[:sort]
+        viewby = 'DESC'
+      else
+        session[:sort] = params[:sort]
+        viewby = 'ASC'
+      end
     when 'release_date'
       orderby = :release_date
       @release_header = 'hilite'
+      if params[:sort] == session[:sort] && params[:sort]
+        viewby = 'DESC'
+      else
+        session[:sort] = params[:sort]
+        viewby = 'ASC'
+      end
     end
     
     if @restore
@@ -128,7 +141,9 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => orderby).paginate(page: params[:page], per_page: @per_page)
+                                  :order => "#{orderby} #{viewby}")
+      @count = @movies.count
+      @movies = @movies.paginate(page: params[:page], per_page: @per_page)
     else
       # flash.now[:notice] = %Q(title_search for "#{@title_search}")
       @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
@@ -144,7 +159,8 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => orderby)
+                                  :order => "#{orderby} #{viewby}")
+      @count = Movie.count
     end
   end
 
