@@ -10,139 +10,148 @@ class MoviesController < ApplicationController
       return
     end
     
-    @ratings_hash = {}
-    Movie.all_ratings.each do |rating|
-      @ratings_hash[rating] = "1"
-    end
-    @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
-    if params[:ratings]
-      session[:ratings] = params[:ratings]
-    end
-    if !params[:ratings] and session[:ratings]
-      session[:ratings] = params[:ratings]
-      @restore = true
-      if Rails.env.development?
-        puts "RATINGS RESTORE"
-      end
-    end
+    # @ratings_hash = {}
+    # Movie.all_ratings.each do |rating|
+    #   @ratings_hash[rating] = "1"
+    # end
+    # @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
+    # if params[:ratings]
+    #   session[:ratings] = params[:ratings]
+    # end
+    # if !params[:ratings] and session[:ratings]
+    #   session[:ratings] = params[:ratings]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "RATINGS RESTORE"
+    #   end
+    # end
+    checkbox_params("ratings")
     
-    @locations_hash = {}
-    Movie.all_locations.each do |location|
-      @locations_hash[location] = "1"
-    end
-    @selected_locations = params[:locations] || session[:locations] || @locations_hash
-    if params[:locations]
-      session[:locations] = params[:locations]
-    end
-    if !params[:locations] and session[:locations]
-      session[:locations] = params[:locations]
-      @restore = true
-      if Rails.env.development?
-        puts "LOCATIONS RESTORE"
-      end
-    end
+    # @locations_hash = {}
+    # Movie.all_locations.each do |location|
+    #   @locations_hash[location] = "1"
+    # end
+    # @selected_locations = params[:locations] || session[:locations] || @locations_hash
+    # if params[:locations]
+    #   session[:locations] = params[:locations]
+    # end
+    # if !params[:locations] and session[:locations]
+    #   session[:locations] = params[:locations]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "LOCATIONS RESTORE"
+    #   end
+    # end
+    checkbox_params("locations")
     
-    @qualities_hash = {}
-    Movie.all_qualities.each do |quality|
-      @qualities_hash[quality] = "1"
-    end
-    @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
-    if params[:qualities]
-      session[:qualities] = params[:qualities]
-    end
-    if !params[:qualities] and session[:qualities]
-      session[:qualities] = params[:qualities]
-      @restore = true
-      if Rails.env.development?
-        puts "QUALITIES RESTORE"
-      end
-    end
+    # @qualities_hash = {}
+    # Movie.all_qualities.each do |quality|
+    #   @qualities_hash[quality] = "1"
+    # end
+    # @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
+    # if params[:qualities]
+    #   session[:qualities] = params[:qualities]
+    # end
+    # if !params[:qualities] and session[:qualities]
+    #   session[:qualities] = params[:qualities]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "QUALITIES RESTORE"
+    #   end
+    # end
+    checkbox_params("qualities")
 
-    @title_search = params[:title_search] || session[:title_search] || ''
-    if params[:title_search] != session[:title_search] and params[:title_search] != ''
-      session[:title_search] = params[:title_search]
-      @restore = true
-      if Rails.env.development?
-        puts "TITLESEARCH RESTORE"
-      end
-    end
+    # @title_search = params[:title_search] || session[:title_search] || ''
+    # if params[:title_search] != session[:title_search] and params[:title_search] != ''
+    #   session[:title_search] = params[:title_search]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "TITLESEARCH RESTORE"
+    #   end
+    # end
+    search_params("title")
     
-    @director_search = params[:director_search] || session[:director_search] || ''
-    if params[:director_search] != session[:director_search] && params[:director_search] != ''
-      session[:director_search] = params[:director_search]
-      @restore = true
-      if Rails.env.development?
-        puts "DIRECTORSEARCH RESTORE"
-      end
-    end
+    # @director_search = params[:director_search] || session[:director_search] || ''
+    # if params[:director_search] != session[:director_search] && params[:director_search] != ''
+    #   session[:director_search] = params[:director_search]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "DIRECTORSEARCH RESTORE"
+    #   end
+    # end
+    search_params("director")
     
-    @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
-    if params[:start] != session[:start] && params[:start][:year] == Movie.earliest_movie.year.to_i
-      session[:start] = params[:start]
-      @restore = true
-      if Rails.env.development?
-        puts "STARTYEAR RESTORE"
-      end
-    end
-    @start_search = Date.new(@start_year[:year].to_i,1,1)
+    # @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
+    # if params[:start] != session[:start] && params[:start][:year] == Movie.earliest_movie.year.to_i
+    #   session[:start] = params[:start]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "STARTYEAR RESTORE"
+    #   end
+    # end
+    # @start_search = Date.new(@start_year[:year].to_i,1,1)
+    year_params("start")
     
-    @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
-    if params[:end] != session[:end] && params[:end][:year] == Date.today.year+1
-      session[:end] = params[:end]
-      @restore = true
-      if Rails.env.development?
-        puts "ENDYEAR RESTORE"
-      end
-    end
-    @end_search = Date.new(@end_year[:year].to_i,12,31)
+    # @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
+    # if params[:end] != session[:end] && params[:end][:year] == Date.today.year+1
+    #   session[:end] = params[:end]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "ENDYEAR RESTORE"
+    #   end
+    # end
+    # @end_search = Date.new(@end_year[:year].to_i,12,31)
+    year_params("end")
     
-    if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
-      params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
-      params[:end] = session[:end] = {:year => Date.today.year+1}
-      flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
-      redirect_to search_path
-      return
-    end
+    # if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
+    #   params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
+    #   params[:end] = session[:end] = {:year => Date.today.year+1}
+    #   flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
+    #   redirect_to search_path
+    #   return
+    # end
     
-    @per_page = params[:per_page] || session[:per_page] || 20
-    @paginate = true
-    if @per_page == "All"
-      @paginate = false
-    end
-    if params[:per_page] != session[:per_page] && params[:per_page].to_i != 20
-      session[:per_page] = params[:per_page]
-      @restore = true
-      if Rails.env.development?
-        puts "PERPAGE RESTORE"
-      end
-    end
+    # @per_page = params[:per_page] || session[:per_page] || 20
+    # @paginate = true
+    # if @per_page == "All"
+    #   @paginate = false
+    # end
+    # if params[:per_page] != session[:per_page] && params[:per_page].to_i != 20
+    #   session[:per_page] = params[:per_page]
+    #   @restore = true
+    #   if Rails.env.development?
+    #     puts "PERPAGE RESTORE"
+    #   end
+    # end
+    page_params
     
-    @sort = params[:sort] || session[:sort] || 'title'
-    @viewby = params[:viewby] || session[:viewby] || 'ASC'
-    case @sort
-    when 'title'
-      @title_header = 'hilite'
-    when 'release_date'
-      @release_header = 'hilite'
-    end
-    case @viewby
-    when 'ASC'
-      @viewby = 'DESC'
-      orderby = 'ASC'
-    when 'DESC'
-      @viewby = 'ASC'
-      orderby = 'DESC'
-    end
-    if params[:sort] != session[:sort] && session[:sort]
-      @viewby = 'DESC'
-      orderby = 'ASC'
-    end
-    if params[:sort] != session[:sort] && params[:sort]
-      session[:sort] = params[:sort]
-    end
-    if params[:viewby] != session[:viewby] && params[:viewby]
-      session[:viewby] = params[:viewby]
-    end
+    # @sort = params[:sort] || session[:sort] || 'title'
+    # @viewby = params[:viewby] || session[:viewby] || 'ASC'
+    # case @sort
+    # when 'title'
+    #   @title_header = 'hilite'
+    # when 'release_date'
+    #   @release_header = 'hilite'
+    # end
+    # case @viewby
+    # when 'ASC'
+    #   @viewby = 'DESC'
+    #   @orderby = 'ASC'
+    # when 'DESC'
+    #   @viewby = 'ASC'
+    #   @orderby = 'DESC'
+    # end
+    # if params[:sort] != session[:sort] && session[:sort]
+    #   @viewby = 'DESC'
+    #   @orderby = 'ASC'
+    # end
+    # if params[:sort] != session[:sort] && params[:sort]
+    #   session[:sort] = params[:sort]
+    # end
+    # if params[:viewby] != session[:viewby] && params[:viewby]
+    #   session[:viewby] = params[:viewby]
+    # end
+    sort_params
     
     if @restore
       puts "RESTORE"
@@ -184,7 +193,7 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => "#{@sort} #{orderby}")
+                                  :order => "#{@sort} #{@orderby}")
       @count = @movies.count
       @movies = @movies.paginate(page: params[:page], per_page: @per_page)
     else
@@ -202,7 +211,7 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => "#{@sort} #{orderby}")
+                                  :order => "#{@sort} #{@orderby}")
       @count = Movie.count
     end
   end
@@ -246,4 +255,157 @@ class MoviesController < ApplicationController
     flash[:success] = "#{@movie.title} was successfully deleted."
     redirect_to movies_path
   end
+  
+  protected
+    def checkbox_params(param_type)
+      case param_type
+      when 'ratings'
+        @ratings_hash = {}
+        Movie.all_ratings.each do |rating|
+          @ratings_hash[rating] = "1"
+        end
+        @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
+        if params[:ratings]
+          session[:ratings] = params[:ratings]
+        end
+        if !params[:ratings] and session[:ratings]
+          session[:ratings] = params[:ratings]
+          @restore = true
+          if Rails.env.development?
+            puts "RATINGS RESTORE"
+          end
+        end
+      when 'locations'
+        @locations_hash = {}
+        Movie.all_locations.each do |location|
+          @locations_hash[location] = "1"
+        end
+        @selected_locations = params[:locations] || session[:locations] || @locations_hash
+        if params[:locations]
+          session[:locations] = params[:locations]
+        end
+        if !params[:locations] and session[:locations]
+          session[:locations] = params[:locations]
+          @restore = true
+          if Rails.env.development?
+            puts "LOCATIONS RESTORE"
+          end
+        end
+      when 'qualities'
+        @qualities_hash = {}
+        Movie.all_qualities.each do |quality|
+          @qualities_hash[quality] = "1"
+        end
+        @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
+        if params[:qualities]
+          session[:qualities] = params[:qualities]
+        end
+        if !params[:qualities] and session[:qualities]
+          session[:qualities] = params[:qualities]
+          @restore = true
+          if Rails.env.development?
+            puts "QUALITIES RESTORE"
+          end
+        end
+      end
+    end
+
+    def search_params(param_type)
+      case param_type
+      when 'title'
+        @title_search = params[:title_search] || session[:title_search] || ''
+        if params[:title_search] != session[:title_search] and params[:title_search] != ''
+          session[:title_search] = params[:title_search]
+          @restore = true
+          if Rails.env.development?
+            puts "TITLESEARCH RESTORE"
+          end
+        end
+      when 'director'
+        @director_search = params[:director_search] || session[:director_search] || ''
+        if params[:director_search] != session[:director_search] && params[:director_search] != ''
+          session[:director_search] = params[:director_search]
+          @restore = true
+          if Rails.env.development?
+            puts "DIRECTORSEARCH RESTORE"
+          end
+        end
+      end
+    end
+
+    def year_params(param_type)
+      case param_type
+      when 'start'
+        @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
+        if params[:start] != session[:start] && params[:start][:year] == Movie.earliest_movie.year.to_i
+          session[:start] = params[:start]
+          @restore = true
+          if Rails.env.development?
+            puts "STARTYEAR RESTORE"
+          end
+        end
+        @start_search = Date.new(@start_year[:year].to_i,1,1)
+      when 'end'
+        @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
+        if params[:end] != session[:end] && params[:end][:year] == Date.today.year+1
+          session[:end] = params[:end]
+          @restore = true
+          if Rails.env.development?
+            puts "ENDYEAR RESTORE"
+          end
+        end
+        @end_search = Date.new(@end_year[:year].to_i,12,31)
+      end
+      if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
+        params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
+        params[:end] = session[:end] = {:year => Date.today.year+1}
+        flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
+        redirect_to search_path
+        return
+      end
+    end
+
+    def page_params
+      @per_page = params[:per_page] || session[:per_page] || 20
+      @paginate = true
+      if @per_page == "All"
+        @paginate = false
+      end
+      if params[:per_page] != session[:per_page] && params[:per_page].to_i != 20
+        session[:per_page] = params[:per_page]
+        @restore = true
+        if Rails.env.development?
+          puts "PERPAGE RESTORE"
+        end
+      end
+    end
+
+    def sort_params
+      @sort = params[:sort] || session[:sort] || 'title'
+      @viewby = params[:viewby] || session[:viewby] || 'ASC'
+      case @sort
+      when 'title'
+        @title_header = 'hilite'
+      when 'release_date'
+        @release_header = 'hilite'
+      end
+      case @viewby
+      when 'ASC'
+        @viewby = 'DESC'
+        @orderby = 'ASC'
+      when 'DESC'
+        @viewby = 'ASC'
+        @orderby = 'DESC'
+      end
+      if params[:sort] != session[:sort] && session[:sort]
+        @viewby = 'DESC'
+        @orderby = 'ASC'
+      end
+      if params[:sort] != session[:sort] && params[:sort]
+        session[:sort] = params[:sort]
+      end
+      if params[:viewby] != session[:viewby] && params[:viewby]
+        session[:viewby] = params[:viewby]
+      end
+    end
 end

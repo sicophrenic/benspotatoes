@@ -4,22 +4,6 @@
 
 = form_tag movies_path do
 
-	= label :movie, :title, 'Title'
-	= text_field :movie, 'title'
-
-	= label :movie, :director, 'Director'
-	= text_field :movie, 'director'
-
-	= label :movie, :rating, 'Rating'
-	= select :movie, :rating, Movie.all_ratings
-
-	= label :movie, :location, 'Location'
-	= select :movie, :location, Movie.all_locations
-
-	= label :movie, :quality, 'Quality'
-	= select :movie, :quality, Movie.all_qualities
-
-	= label :movie, :release_date, 'Released On'
-	= date_select :movie, :release_date
+	= render :partial => "form"
 
 	= submit_tag 'Create Movie', :class => "btn btn-inverse"
