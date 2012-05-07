@@ -117,22 +117,16 @@ class MoviesController < ApplicationController
       end
     end
     
-    @sort = params[:sort] || session[:sort] || ''
-    @viewby = params[:viewby] || session[:viewby] || ''
+    @sort = params[:sort] || session[:sort] || 'title'
+    @viewby = params[:viewby] || session[:viewby] || 'ASC'
     case @sort
     when 'title'
-      @title_header = 'hilite'
-    when ''
-      @sort = 'title'
       @title_header = 'hilite'
     when 'release_date'
       @release_header = 'hilite'
     end
     case @viewby
     when 'ASC'
-      @viewby = 'DESC'
-      orderby = 'ASC'
-    when ''
       @viewby = 'DESC'
       orderby = 'ASC'
     when 'DESC'
