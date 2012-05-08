@@ -1,7 +1,7 @@
 %table#movies.table.table-bordered.table-condensed
 	%thead
 		%tr
-			%th{:class => @title_header}= link_to 'Title',
+			%th{:id => @title_header}= link_to 'Title',
 														movies_path(:sort => 'title',
 																				:viewby => @viewby,
 																				:ratings => @selected_ratings,
@@ -16,7 +16,7 @@
 			%th Rating
 			%th Location
 			%th Quality
-			%th{:class => @release_header}= link_to 'Release Date',
+			%th{:id => @release_header}= link_to 'Release Date',
 															movies_path(:sort => 'release_date',
 																					:viewby => @viewby,
 																					:ratings => @selected_ratings,

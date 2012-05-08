@@ -5,12 +5,4 @@
 = render :partial => "shared/flash", :locals => { :flash => flash }
 = render :partial => "content"
 
-.row
-	.span8
-		%br
-		= button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
-	.span4
-		Show Per Page:
-		= form_tag movies_path, :method => :get, :id => 'paginate_form', :class => 'form-horizontal' do
-			= select_tag :per_page, options_for_select([10,20,30,'All'], @per_page), :class => 'span3'
-			= submit_tag 'Go', :id => 'paginate_form', :class => 'btn btn-inverse'
+= render :partial => "action"
