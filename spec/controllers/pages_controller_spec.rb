@@ -9,13 +9,6 @@ describe PagesController do
     end
   end
 
-  describe "GET 'movies'" do
-    it "returns http success" do
-      get 'movies'
-      response.should be_success
-    end
-  end
-
   describe "GET 'about'" do
     it "returns http success" do
       get 'about'

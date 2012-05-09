@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController  
-  def index    
+  def index   
     if params[:nuke]
       if Rails.env.development?
         puts "SESSION NUKE"
@@ -102,7 +102,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(params[:movie])
     if @movie.save
       flash[:success] = "#{@movie.title} was successfully created."
-      redirect_to movies_path
+      redirect_to movie_path(@movie)
     else
       flash[:error] = "#{@movie.title} was not successfully created: #{@movie.errors.full_messages.first}."
       redirect_to new_movie_path
@@ -116,7 +116,7 @@ class MoviesController < ApplicationController
       redirect_to movie_path(@movie)
     else
       flash[:error] = "#{@movie.title} was not successfully updated: #{@movie.errors.full_messages.first}."
-      redirect_to movie_path(@movie)
+      redirect_to edit_movie_path(@movie)
     end
   end
   
@@ -184,8 +184,8 @@ class MoviesController < ApplicationController
     def search_params(param_type)
       case param_type
       when 'title'
-        @title_search = params[:title_search] || session[:title_search] || ''
-        if params[:title_search] != session[:title_search] and params[:title_search] != ''
+        @title_search = params[:title_search] || session[:title_search] || ""
+        if params[:title_search] != session[:title_search] and params[:title_search] != ""
           session[:title_search] = params[:title_search]
           @restore = true
           if Rails.env.development?
@@ -193,8 +193,8 @@ class MoviesController < ApplicationController
           end
         end
       when 'director'
-        @director_search = params[:director_search] || session[:director_search] || ''
-        if params[:director_search] != session[:director_search] && params[:director_search] != ''
+        @director_search = params[:director_search] || session[:director_search] || ""
+        if params[:director_search] != session[:director_search] && params[:director_search] != ""
           session[:director_search] = params[:director_search]
           @restore = true
           if Rails.env.development?

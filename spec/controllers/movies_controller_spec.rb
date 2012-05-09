@@ -24,7 +24,7 @@ describe MoviesController do
   # Movie. As you add validations to Movie, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:title => 'Movie Title', :director => 'Movie Director', :rating => 'PG-13', :location => 'F', :quality => '720p', :release_date => '7-Jul-1990'}
   end
   
   # This should return the minimal set of values that should be in the session
@@ -40,6 +40,11 @@ describe MoviesController do
       get :index, {}, valid_session
       assigns(:movies).should eq([movie])
     end
+    
+    pending "test search params"
+    describe "search params" do
+      
+    end
   end
 
   describe "GET show" do
@@ -51,10 +56,6 @@ describe MoviesController do
   end
 
   describe "GET new" do
-    it "assigns a new movie as @movie" do
-      get :new, {}, valid_session
-      assigns(:movie).should be_a_new(Movie)
-    end
   end
 
   describe "GET edit" do
@@ -93,11 +94,11 @@ describe MoviesController do
         assigns(:movie).should be_a_new(Movie)
       end
 
-      it "re-renders the 'new' template" do
+      it "redirect to the new movie path" do
         # Trigger the behavior that occurs when invalid params are submitted
         Movie.any_instance.stub(:save).and_return(false)
         post :create, {:movie => {}}, valid_session
-        response.should render_template("new")
+        response.should redirect_to new_movie_path
       end
     end
   end
@@ -136,12 +137,12 @@ describe MoviesController do
         assigns(:movie).should eq(movie)
       end
 
-      it "re-renders the 'edit' template" do
+      it "redirect to the edit movie path" do
         movie = Movie.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Movie.any_instance.stub(:save).and_return(false)
         put :update, {:id => movie.to_param, :movie => {}}, valid_session
-        response.should render_template("edit")
+        response.should redirect_to edit_movie_path(movie)
       end
     end
   end

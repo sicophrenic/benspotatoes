@@ -19,7 +19,7 @@ describe Movie do
   
   before(:each) do
     @attr = { :title => "Example Movie", :director => "Example Director", :rating => "R",
-              :location => "F", :quality => "720p", :release_date => Time.now }
+              :location => "F", :quality => "720p", :release_date => Date.today }
   end
   
   it "should create a new instance given attributes" do
@@ -30,15 +30,16 @@ describe Movie do
     Movie.new(@attr.merge(:title => "")).should_not be_valid
   end
   
-  it "should reject duplicate titles" do
-    Movie.create!(@attr)
-    Movie.new(@attr).should_not be_valid
-  end
-  
-  it "should reject duplicate titles by lettercase" do
-    Movie.create!(@attr.merge(:title => @attr[:title].upcase))
-    Movie.new(@attr.merge(:title => @attr[:title].upcase)).should_not be_valid
-  end
+  # it "should reject duplicate titles" do
+  #   Movie.create!(@attr)
+  #   Movie.new(@attr).should_not be_valid
+  # end
+  # 
+  # it "should reject duplicate titles by lettercase" do
+  #   Movie.create!(@attr.merge(:title => @attr[:title].upcase))
+  #   Movie.new(@attr.merge(:title => @attr[:title].upcase)).should_not be_valid
+  # end
+  pending "validation for duplicate movies after franchises and nested movie displays have been introduced"
   
   it "should require a rating" do
     Movie.new(@attr.merge(:rating => "")).should_not be_valid
