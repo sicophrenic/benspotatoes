@@ -11,11 +11,12 @@ require 'mechanize'
 
 title, director, rating, location, quality, release = "","","","","",""
 months = { "January" => "Jan", "February" => "Feb", "March" => "Mar", "April" => "Apr", "May" => "May", "June" => "Jun", "July" => "Jul", "August" => "Aug", "September" => "Sep", "October" => "Oct", "November" => "Nov", "December" => "Dec" }
-writeFile = File.open('allpotatoes.041612.rb','r+')
+writeFile = File.open('new-seeds.rb','r+')
 # puts 'List of Movies (filename)?:'
 # inFile = gets
-File.open('allpotatoes.041612.tsv','r') do |opened|
+File.open('new-seeds.txt','r') do |opened|
   while title = opened.gets
+    title = title.split('- ').last
     agent = Mechanize.new
     page = agent.get('http://google.com')
     google_form = page.form('f')
