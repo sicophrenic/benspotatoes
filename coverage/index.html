@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Code coverage for Benspotatoes</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src='./assets/0.5.3/jquery-1.6.2.min.js' type='text/javascript'></script>
+    <script src='./assets/0.5.3/jquery.dataTables.min.js' type='text/javascript'></script>   
+    <script src='./assets/0.5.3/fancybox/jquery.fancybox-1.3.1.pack.js' type='text/javascript'></script>   
+    <script src='./assets/0.5.3/jquery.timeago.js' type='text/javascript'></script>   
+    <script src='./assets/0.5.3/jquery.url.js' type='text/javascript'></script>   
+    <script src='./assets/0.5.3/highlight.pack.js' type='text/javascript'></script>  
+    <script src='./assets/0.5.3/app.js' type='text/javascript'></script>    
+    <link href='./assets/0.5.3/stylesheet.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
+    <link href='./assets/0.5.3/highlight.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
+    <link href='./assets/0.5.3/fancybox/jquery.fancybox-1.3.1.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
+    <link href='./assets/0.5.3/smoothness/jquery-ui-1.8.4.custom.css' media='screen, projection, print' rel='stylesheet' type='text/css'>    
+    <link rel="shortcut icon" type="image/png" href="./assets/0.5.3/favicon_red.png" />
+    <link rel="icon" type="image/png" href="./assets/0.5.3/favicon.png" />
+  </head>
+  
+  <body>
+    <div id="loading">
+      <img src="./assets/0.5.3/loading.gif" alt="loading"/>
+    </div>
+    <div id="wrapper" style="display:none;">
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-05-31T14:13:49-07:00">2012-05-31T14:13:49-07:00</abbr></div>
+      <ul class="group_tabs"></ul>
+
+      <div id="content">
+        <div class="file_list_container" id="AllFiles">
+  <h2>
+    <span class="group_name">All Files</span>
+    (<span class="covered_percent"><span class="red">62.93%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="green">
+         1.11
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="AllFiles"></a>
+  <div>
+    <b>7</b> files in total.
+    <b>205</b> relevant lines. 
+    <span class="green"><b>129</b> lines covered</span> and
+    <span class="red"><b>76</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="strong"><a href="#cfd8fc9ac964cd6e05527327993b8b61662d801b" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>3</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#7e16a9a007708b6b7627db5c1b9e04f5a25d080d" class="src_link" title="app/controllers/movies_controller.rb">app/controllers/movies_controller.rb</a></td>
+        <td class="red strong">62.99 %</td>
+        <td>282</td>
+        <td>154</td>
+        <td>97</td>
+        <td>57</td>
+        <td>1.5</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#e312c24bf0da8e8cb1d902daf97b6e2acbb83892" class="src_link" title="app/controllers/pages_controller.rb">app/controllers/pages_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>13</td>
+        <td>5</td>
+        <td>5</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#f372dc3f95e1cf78e46d2ed395f307da73a2fa77" class="src_link" title="app/helpers/application_helper.rb">app/helpers/application_helper.rb</a></td>
+        <td class="red strong">25.0 %</td>
+        <td>16</td>
+        <td>8</td>
+        <td>2</td>
+        <td>6</td>
+        <td>0.3</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#3caf4a26c74a8ecdbfd56f1193380e020ae00a31" class="src_link" title="app/helpers/movies_helper.rb">app/helpers/movies_helper.rb</a></td>
+        <td class="red strong">13.33 %</td>
+        <td>25</td>
+        <td>15</td>
+        <td>2</td>
+        <td>13</td>
+        <td>0.1</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#72fc8699d84222b19c4d038ce5d978a4063b1c84" class="src_link" title="app/helpers/pages_helper.rb">app/helpers/pages_helper.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#13f294a07291452e091313ad2e7460a1a35007d4" class="src_link" title="app/models/movie.rb">app/models/movie.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>56</td>
+        <td>20</td>
+        <td>20</td>
+        <td>0</td>
+        <td>2.9</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+
+        
+          <div class="file_list_container" id="Controllers">
+  <h2>
+    <span class="group_name">Controllers</span>
+    (<span class="covered_percent"><span class="red">64.6%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="green">
+         1.17
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="Controllers"></a>
+  <div>
+    <b>3</b> files in total.
+    <b>161</b> relevant lines. 
+    <span class="green"><b>104</b> lines covered</span> and
+    <span class="red"><b>57</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="strong"><a href="#cfd8fc9ac964cd6e05527327993b8b61662d801b" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>3</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#7e16a9a007708b6b7627db5c1b9e04f5a25d080d" class="src_link" title="app/controllers/movies_controller.rb">app/controllers/movies_controller.rb</a></td>
+        <td class="red strong">62.99 %</td>
+        <td>282</td>
+        <td>154</td>
+        <td>97</td>
+        <td>57</td>
+        <td>1.5</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#e312c24bf0da8e8cb1d902daf97b6e2acbb83892" class="src_link" title="app/controllers/pages_controller.rb">app/controllers/pages_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>13</td>
+        <td>5</td>
+        <td>5</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+        
+          <div class="file_list_container" id="Models">
+  <h2>
+    <span class="group_name">Models</span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="green">
+         2.9
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="Models"></a>
+  <div>
+    <b>1</b> files in total.
+    <b>20</b> relevant lines. 
+    <span class="green"><b>20</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="strong"><a href="#13f294a07291452e091313ad2e7460a1a35007d4" class="src_link" title="app/models/movie.rb">app/models/movie.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>56</td>
+        <td>20</td>
+        <td>20</td>
+        <td>0</td>
+        <td>2.9</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+        
+          <div class="file_list_container" id="Mailers">
+  <h2>
+    <span class="group_name">Mailers</span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="red">
+         0.0
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="Mailers"></a>
+  <div>
+    <b>0</b> files in total.
+    <b>0.0</b> relevant lines. 
+    <span class="green"><b>0.0</b> lines covered</span> and
+    <span class="red"><b>0.0</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+        
+          <div class="file_list_container" id="Helpers">
+  <h2>
+    <span class="group_name">Helpers</span>
+    (<span class="covered_percent"><span class="red">20.83%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="red">
+         0.47
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="Helpers"></a>
+  <div>
+    <b>3</b> files in total.
+    <b>24</b> relevant lines. 
+    <span class="green"><b>5</b> lines covered</span> and
+    <span class="red"><b>19</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="strong"><a href="#f372dc3f95e1cf78e46d2ed395f307da73a2fa77" class="src_link" title="app/helpers/application_helper.rb">app/helpers/application_helper.rb</a></td>
+        <td class="red strong">25.0 %</td>
+        <td>16</td>
+        <td>8</td>
+        <td>2</td>
+        <td>6</td>
+        <td>0.3</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#3caf4a26c74a8ecdbfd56f1193380e020ae00a31" class="src_link" title="app/helpers/movies_helper.rb">app/helpers/movies_helper.rb</a></td>
+        <td class="red strong">13.33 %</td>
+        <td>25</td>
+        <td>15</td>
+        <td>2</td>
+        <td>13</td>
+        <td>0.1</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#72fc8699d84222b19c4d038ce5d978a4063b1c84" class="src_link" title="app/helpers/pages_helper.rb">app/helpers/pages_helper.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+        
+          <div class="file_list_container" id="Libraries">
+  <h2>
+    <span class="group_name">Libraries</span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="red">
+         0.0
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="Libraries"></a>
+  <div>
+    <b>0</b> files in total.
+    <b>0.0</b> relevant lines. 
+    <span class="green"><b>0.0</b> lines covered</span> and
+    <span class="red"><b>0.0</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+        
+          <div class="file_list_container" id="Plugins">
+  <h2>
+    <span class="group_name">Plugins</span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
+     covered at
+     <span class="covered_strength">
+       <span class="red">
+         0.0
+       </span>
+    </span> hits/line)
+  </h2>
+  <a name="Plugins"></a>
+  <div>
+    <b>0</b> files in total.
+    <b>0.0</b> relevant lines. 
+    <span class="green"><b>0.0</b> lines covered</span> and
+    <span class="red"><b>0.0</b> lines missed </span>
+  </div>
+  <table class="file_list">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>% covered</th>
+        <th>Lines</th>
+        <th>Relevant Lines</th>
+        <th>Lines covered</th>
+        <th>Lines missed</th>
+        <th>Avg. Hits / Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+        
+      </div>
+    
+      <div id="footer">
+        Generated by <a href="http://github.com/colszowka/simplecov">simplecov</a> v0.6.4 
+        and simplecov-html v0.5.3<br/>
+        using RSpec
+      </div>
+    
+      <div class="source_files">
+      
+        <div class="source_table" id="cfd8fc9ac964cd6e05527327993b8b61662d801b">
+  <div class="header">
+    <h3>app/controllers/application_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class ApplicationController &lt; ActionController::Base</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  protect_from_forgery</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="7e16a9a007708b6b7627db5c1b9e04f5a25d080d">
+  <div class="header">
+    <h3>app/controllers/movies_controller.rb</h3>
+    <h4><span class="red">62.99 %</span> covered</h4>
+    <div>
+      <b>154</b> relevant lines. 
+      <span class="green"><b>97</b> lines covered</span> and
+      <span class="red"><b>57</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class MoviesController &lt; ApplicationController  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def index   </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="3">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    if params[:nuke]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="4">
+          
+          
+          <code class="ruby">      if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="5">
+          
+          
+          <code class="ruby">        puts &quot;SESSION NUKE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="7">
+          
+          
+          <code class="ruby">      session.clear</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">      # flash[:notice] = &quot;Session reset.&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
+          <code class="ruby">      redirect_to movies_path</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
+          
+          <code class="ruby">      return</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="13">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    checkbox_params(&quot;ratings&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="14">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    checkbox_params(&quot;locations&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="15">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    checkbox_params(&quot;qualities&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="17">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    search_params(&quot;title&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="18">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    search_params(&quot;director&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="20">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    year_params(&quot;start&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="21">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    year_params(&quot;end&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="23">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    page_params</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="25">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    sort_params</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="27">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    if @restore</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="28">
+          
+          
+          <code class="ruby">      puts &quot;RESTORE&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="29">
+          
+          
+          <code class="ruby">      @sort = session[:sort]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="30">
+          
+          
+          <code class="ruby">      @viewby = session[:viewby]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">      redirect_to movies_path(:ratings =&gt; @selected_ratings,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby">                              :locations =&gt; @selected_locations,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">                              :qualities =&gt; @selected_qualities,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">                              :sort =&gt; @sort,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby">                              :viewby =&gt; @viewby,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">                              :title_search =&gt; @title_search,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">                              :director_search =&gt; @director_search,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">                              :start =&gt; @start_year,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">                              :end =&gt; @end_year,</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="40">
+          
+          
+          <code class="ruby">                              :per_page =&gt; @per_page)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="41">
+          
+          
+          <code class="ruby">      return</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="44">
+          
+          
+          <code class="ruby">    if @selected_ratings.count != Movie.all_ratings.count ||</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="45">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @selected_locations.count != Movie.all_locations.count ||</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">        @selected_qualities.count != Movie.all_qualities.count ||</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby">        @title_search || @director_search ||</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
+          <code class="ruby">        @start_year || @end_year</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="49">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @check_count = true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="52">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    if @paginate</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby">      # flash.now[:notice] = %Q(title_search for &quot;#{@title_search}&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="54">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @movies = Movie.find(:all,  :conditions =&gt; [&quot;rating IN (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby">                                                  location IN (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">                                                  quality IN (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">                                                  lower(title) LIKE (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">                                                  lower(director) LIKE (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby">                                                  release_date &gt;= (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby">                                                  release_date &lt;= (?)&quot;,  @selected_ratings.keys,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">                                                                    @selected_locations.keys,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">                                                                    @selected_qualities.keys,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">                                                                    &quot;%#{@title_search.downcase}%&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">                                                                    &quot;%#{@director_search.downcase}%&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">                                                                    @start_search,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby">                                                                    @end_search],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby">                                  :order =&gt; &quot;#{@sort} #{@orderby}&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="68">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @count = @movies.count</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="69">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @movies = @movies.paginate(page: params[:page], per_page: @per_page)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">      # flash.now[:notice] = %Q(title_search for &quot;#{@title_search}&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="72">
+          
+          
+          <code class="ruby">      @movies = Movie.find(:all,  :conditions =&gt; [&quot;rating IN (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">                                                  location IN (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">                                                  quality IN (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">                                                  lower(title) LIKE (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">                                                  lower(director) LIKE (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">                                                  release_date &gt;= (?) AND</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">                                                  release_date &lt;= (?)&quot;,  @selected_ratings.keys,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby">                                                                    @selected_locations.keys,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
+          <code class="ruby">                                                                    @selected_qualities.keys,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">                                                                    &quot;%#{@title_search.downcase}%&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
+          
+          
+          <code class="ruby">                                                                    &quot;%#{@director_search.downcase}%&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby">                                                                    @start_search,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
+          
+          
+          <code class="ruby">                                                                    @end_search],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">                                  :order =&gt; &quot;#{@sort} #{@orderby}&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="86">
+          
+          
+          <code class="ruby">      @count = Movie.count</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="89">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="90">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def show</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="91">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @movie = Movie.find(params[:id])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="94">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="96">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="97">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def edit</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="98">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @movie = Movie.find(params[:id])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="101">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def create</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="102">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @movie = Movie.new(params[:movie])</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="103">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    if @movie.save</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="104">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      flash[:success] = &quot;#{@movie.title} was successfully created.&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="105">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      redirect_to movie_path(@movie)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="106">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="107">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      flash[:error] = &quot;#{@movie.title} was not successfully created: #{@movie.errors.full_messages.first}.&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="108">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      redirect_to new_movie_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="109">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="110">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="111">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="112">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def update</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="113">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @movie = Movie.find(params[:id])</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="114">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    if @movie.update_attributes(params[:movie])</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="115">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      flash[:success] = &quot;#{@movie.title} was successfully updated.&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="116">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      redirect_to movie_path(@movie)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="118">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      flash[:error] = &quot;#{@movie.title} was not successfully updated: #{@movie.errors.full_messages.first}.&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="119">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      redirect_to edit_movie_path(@movie)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="122">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="123">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def destroy</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="124">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    @movie = Movie.find(params[:id])</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="125">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    @movie.destroy</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="126">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    flash[:success] = &quot;#{@movie.title} was successfully deleted.&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="127">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    redirect_to movies_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="128">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="129">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="130">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  protected</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="131">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def checkbox_params(param_type)</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="132">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      case param_type</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="133">
+          
+          
+          <code class="ruby">      when 'ratings'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="134">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @ratings_hash = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="135">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        Movie.all_ratings.each do |rating|</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="136">
+          <span class="hits">10</span>
+          
+          <code class="ruby">          @ratings_hash[rating] = &quot;1&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="137">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="138">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="139">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:ratings]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="140">
+          
+          
+          <code class="ruby">          session[:ratings] = params[:ratings]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="141">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="142">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if !params[:ratings] and session[:ratings]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="143">
+          
+          
+          <code class="ruby">          session[:ratings] = params[:ratings]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="144">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="145">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="146">
+          
+          
+          <code class="ruby">            puts &quot;RATINGS RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="147">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="148">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="149">
+          
+          
+          <code class="ruby">      when 'locations'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="150">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @locations_hash = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="151">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        Movie.all_locations.each do |location|</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="152">
+          <span class="hits">10</span>
+          
+          <code class="ruby">          @locations_hash[location] = &quot;1&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="153">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="154">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @selected_locations = params[:locations] || session[:locations] || @locations_hash</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="155">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:locations]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="156">
+          
+          
+          <code class="ruby">          session[:locations] = params[:locations]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="157">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="158">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if !params[:locations] and session[:locations]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="159">
+          
+          
+          <code class="ruby">          session[:locations] = params[:locations]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="160">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="161">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="162">
+          
+          
+          <code class="ruby">            puts &quot;LOCATIONS RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="163">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="164">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="165">
+          
+          
+          <code class="ruby">      when 'qualities'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="166">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @qualities_hash = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="167">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        Movie.all_qualities.each do |quality|</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="168">
+          <span class="hits">6</span>
+          
+          <code class="ruby">          @qualities_hash[quality] = &quot;1&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="169">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="170">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="171">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:qualities]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="172">
+          
+          
+          <code class="ruby">          session[:qualities] = params[:qualities]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="173">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="174">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if !params[:qualities] and session[:qualities]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="175">
+          
+          
+          <code class="ruby">          session[:qualities] = params[:qualities]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="176">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="177">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="178">
+          
+          
+          <code class="ruby">            puts &quot;QUALITIES RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="179">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="180">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="181">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="182">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="183">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="184">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def search_params(param_type)</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="185">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      case param_type</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="186">
+          
+          
+          <code class="ruby">      when 'title'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="187">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @title_search = params[:title_search] || session[:title_search] || &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="188">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:title_search] != session[:title_search] and params[:title_search] != &quot;&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="189">
+          
+          
+          <code class="ruby">          session[:title_search] = params[:title_search]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="190">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="191">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="192">
+          
+          
+          <code class="ruby">            puts &quot;TITLESEARCH RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="193">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="194">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="195">
+          
+          
+          <code class="ruby">      when 'director'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="196">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @director_search = params[:director_search] || session[:director_search] || &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="197">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:director_search] != session[:director_search] &amp;&amp; params[:director_search] != &quot;&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="198">
+          
+          
+          <code class="ruby">          session[:director_search] = params[:director_search]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="199">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="200">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="201">
+          
+          
+          <code class="ruby">            puts &quot;DIRECTORSEARCH RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="202">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="203">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="204">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="205">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="206">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="207">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def year_params(param_type)</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="208">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      case param_type</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="209">
+          
+          
+          <code class="ruby">      when 'start'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="210">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @start_year = params[:start] || session[:start] || {:year =&gt; Movie.earliest_movie.year.to_i}</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="211">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:start] != session[:start] &amp;&amp; params[:start][:year] == Movie.earliest_movie.year.to_i</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="212">
+          
+          
+          <code class="ruby">          session[:start] = params[:start]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="213">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="214">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="215">
+          
+          
+          <code class="ruby">            puts &quot;STARTYEAR RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="216">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="217">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="218">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @start_search = Date.new(@start_year[:year].to_i,1,1)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="219">
+          
+          
+          <code class="ruby">      when 'end'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="220">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @end_year = params[:end] || session[:end] || {:year =&gt; Date.today.year+1}</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="221">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        if params[:end] != session[:end] &amp;&amp; params[:end][:year] == Date.today.year+1</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="222">
+          
+          
+          <code class="ruby">          session[:end] = params[:end]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="223">
+          
+          
+          <code class="ruby">          @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="224">
+          
+          
+          <code class="ruby">          if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="225">
+          
+          
+          <code class="ruby">            puts &quot;ENDYEAR RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="226">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="227">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="228">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @end_search = Date.new(@end_year[:year].to_i,12,31)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="229">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="230">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      if params[:start] &amp;&amp; params[:end] &amp;&amp; params[:start][:year] &gt; params[:end][:year]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="231">
+          
+          
+          <code class="ruby">        params[:start] = session[:start] = {:year =&gt; Movie.earliest_movie.year}</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="232">
+          
+          
+          <code class="ruby">        params[:end] = session[:end] = {:year =&gt; Date.today.year+1}</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="233">
+          
+          
+          <code class="ruby">        flash[:error] = &quot;Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="234">
+          
+          
+          <code class="ruby">        redirect_to search_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="235">
+          
+          
+          <code class="ruby">        return</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="236">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="237">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="238">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="239">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def page_params</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="240">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @per_page = params[:per_page] || session[:per_page] || 20</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="241">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @paginate = true</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="242">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      if @per_page == &quot;All&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="243">
+          
+          
+          <code class="ruby">        @paginate = false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="244">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="245">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      if params[:per_page] != session[:per_page] &amp;&amp; params[:per_page].to_i != 20</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="246">
+          
+          
+          <code class="ruby">        session[:per_page] = params[:per_page]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="247">
+          
+          
+          <code class="ruby">        @restore = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="248">
+          
+          
+          <code class="ruby">        if Rails.env.development?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="249">
+          
+          
+          <code class="ruby">          puts &quot;PERPAGE RESTORE&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="250">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="251">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="252">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="253">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="254">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def sort_params</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="255">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @sort = params[:sort] || session[:sort] || 'title'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="256">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      @viewby = params[:viewby] || session[:viewby] || 'ASC'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="257">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      case @sort</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="258">
+          
+          
+          <code class="ruby">      when 'title'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="259">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @title_header = 'hilite'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="260">
+          
+          
+          <code class="ruby">      when 'release_date'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="261">
+          
+          
+          <code class="ruby">        @release_header = 'hilite'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="262">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="263">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      case @viewby</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="264">
+          
+          
+          <code class="ruby">      when 'ASC'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="265">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @viewby = 'DESC'</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="266">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        @orderby = 'ASC'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="267">
+          
+          
+          <code class="ruby">      when 'DESC'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="268">
+          
+          
+          <code class="ruby">        @viewby = 'ASC'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="269">
+          
+          
+          <code class="ruby">        @orderby = 'DESC'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="270">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="271">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      if params[:sort] != session[:sort] &amp;&amp; session[:sort]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="272">
+          
+          
+          <code class="ruby">        @viewby = 'DESC'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="273">
+          
+          
+          <code class="ruby">        @orderby = 'ASC'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="274">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="275">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      if @sort != session[:sort] &amp;&amp; @sort</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="276">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        session[:sort] = @sort</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="277">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="278">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      if @viewby != session[:viewby] &amp;&amp; @viewby</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="279">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        session[:viewby] = @viewby</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="280">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="281">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="282">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="e312c24bf0da8e8cb1d902daf97b6e2acbb83892">
+  <div class="header">
+    <h3>app/controllers/pages_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>5</b> relevant lines. 
+      <span class="green"><b>5</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class PagesController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def home</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def about</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def todo</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def search</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="f372dc3f95e1cf78e46d2ed395f307da73a2fa77">
+  <div class="header">
+    <h3>app/helpers/application_helper.rb</h3>
+    <h4><span class="red">25.0 %</span> covered</h4>
+    <div>
+      <b>8</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>6</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">module ApplicationHelper</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def twitterized_type(type)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="3">
+          
+          
+          <code class="ruby">    case type</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby">      when :alert</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="5">
+          
+          
+          <code class="ruby">        &quot;alert alert-warning&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">      when :error</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="7">
+          
+          
+          <code class="ruby">        &quot;alert alert-error&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">      when :notice</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
+          <code class="ruby">        &quot;alert alert-info&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">      when :success</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="11">
+          
+          
+          <code class="ruby">        &quot;alert alert-success&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">      else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
+          
+          <code class="ruby">        type.to_s</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="3caf4a26c74a8ecdbfd56f1193380e020ae00a31">
+  <div class="header">
+    <h3>app/helpers/movies_helper.rb</h3>
+    <h4><span class="red">13.33 %</span> covered</h4>
+    <div>
+      <b>15</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>13</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">module MoviesHelper</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def search_by(movies, title = nil, director = nil, ratings = nil, locations = nil, qualities = nil)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="3">
+          
+          
+          <code class="ruby">    if title</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="4">
+          
+          
+          <code class="ruby">      movies.keep_if { |movie| movie.title.downcase =~ /#{title.downcase}/ }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="6">
+          
+          
+          <code class="ruby">    if director</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="7">
+          
+          
+          <code class="ruby">      movies.keep_if { |movie| movie.director.downcase =~ /#{director.downcase}/ }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
+          <code class="ruby">    if ratings</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
+          
+          <code class="ruby">      ratings.each do |rating|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="11">
+          
+          
+          <code class="ruby">        movies.keep_if { |movie| movie.rating == rating }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
+          
+          <code class="ruby">    if locations</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
+          
+          <code class="ruby">      locations.each do |location|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="16">
+          
+          
+          <code class="ruby">        movies.keep_if { |movie| movie.location == location }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
+          
+          <code class="ruby">    if qualities</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
+          
+          <code class="ruby">      qualities.each do |quality|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="21">
+          
+          
+          <code class="ruby">        movies.keep_if { |quality| movie.quality == quality }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="72fc8699d84222b19c4d038ce5d978a4063b1c84">
+  <div class="header">
+    <h3>app/helpers/pages_helper.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>1</b> relevant lines. 
+      <span class="green"><b>1</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">module PagesHelper</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="13f294a07291452e091313ad2e7460a1a35007d4">
+  <div class="header">
+    <h3>app/models/movie.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>20</b> relevant lines. 
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="never" data-hits="" data-linenumber="1">
+          
+          
+          <code class="ruby"># == Schema Information</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby">#</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby"># Table name: movies</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby">#</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">#  id           :integer         not null, primary key</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">#  title        :string(255)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">#  director     :string(255)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">#  rating       :string(255)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">#  location     :string(255)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">#  quality      :string(255)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">#  release_date :datetime</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">#  created_at   :datetime</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">#  updated_at   :datetime</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">#</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class Movie &lt; ActiveRecord::Base</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :title, :presence   =&gt; true,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">                    :length     =&gt; { :maximum =&gt; 50 }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :director, :presence =&gt; true</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :rating,  :presence =&gt; true,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">                      :length   =&gt; { :maximum =&gt; 5 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">                      :inclusion =&gt; { :in =&gt; %w(G PG PG-13 M R) }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :location,  :presence =&gt; true,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">                        :length   =&gt; { :maximum =&gt; 1 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">                        :inclusion =&gt; { :in =&gt; %w(E F G H K) }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :quality, :presence =&gt; true,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">                      :inclusion =&gt; { :in =&gt; %w(480p 720p 1080p) }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :release_date,  :presence =&gt; true,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">                            :if =&gt; :invalid_date?</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.all_ratings</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="32">
+          <span class="hits">7</span>
+          
+          <code class="ruby">    %w(G PG PG-13 M R)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="35">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.all_qualities</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="36">
+          <span class="hits">7</span>
+          
+          <code class="ruby">    %w(480p 720p 1080p)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="39">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.all_locations</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="40">
+          <span class="hits">7</span>
+          
+          <code class="ruby">    %w(E F G H K)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="43">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.earliest_movie</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="44">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    if Movie.find(:all, :order =&gt; :release_date).first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="45">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Movie.find(:all, :order =&gt; :release_date).first.release_date</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="47">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Date.new(1900)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  protected</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def invalid_date?</code>
+        </li>
+      
+        <li class="covered" data-hits="20" data-linenumber="53">
+          <span class="hits">20</span>
+          
+          <code class="ruby">      errors.add(:release_date, (&quot;is not a valid date between the years of 1900 and #{Date.today.year}&quot;)) if !((1..31).include?(self.release_date.day) &amp;&amp; (1..12).include?(self.release_date.month) &amp;&amp; (1900..Date.today.year).include?(self.release_date.year))</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">    end      </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+      </div>
+    </div>
+  </body>
+</html>
