@@ -1,9 +1,14 @@
 %h1 Welcome to Ben's Potatoes!
 %br
 
-= form_tag movies_path, :method => :get, :id => 'filters_form', :class => 'well form-search' do
-	What movie(s) are you looking for?
-	%br
-	%br
-	= text_field_tag 'title_search', @title_search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
-	= submit_tag 'Search Movies', :id => 'filters_submit', :class => "btn btn-inverse"
+= render :partial => "shared/flash", :locals => { :flash => flash }
+
+-if user_signed_in?
+	= form_tag movies_path, :method => :get, :id => 'filters_form', :class => 'well form-search' do
+		What movie(s) are you looking for?
+		%br
+		%br
+		= text_field_tag 'title_search', @title_search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
+		= submit_tag 'Search Movies', :id => 'filters_submit', :class => "btn btn-inverse"
+- else
+	You have not signed in! You may do so <a href="/users/sign_in">here</a>.

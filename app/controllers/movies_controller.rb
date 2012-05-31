@@ -1,4 +1,6 @@
-class MoviesController < ApplicationController  
+class MoviesController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index   
     if params[:nuke]
       if Rails.env.development?
