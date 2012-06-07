@@ -54,6 +54,7 @@ class MoviesController < ApplicationController
       puts "RESTORE"
       # @sort = session[:sort]
       # @viewby = session[:viewby]
+      handle_flash
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,
@@ -63,8 +64,7 @@ class MoviesController < ApplicationController
                               :director_search => @director_search,
                               :start => @start_year,
                               :end => @end_year,
-                              :per_page => @per_page
-                              )
+                              :per_page => @per_page)
       return
     end
     
@@ -125,8 +125,9 @@ class MoviesController < ApplicationController
 
   def create
     if !current_user.admin?
-      flash[:error] = "Hey, you can't do that!"
+      flash[:error] = "Hey, you can't do that! You can't create movies unless you're Ben, you silly goose!"
       redirect_to movies_path
+      return
     end
     @movie = Movie.new(params[:movie])
     if @movie.save
@@ -140,8 +141,9 @@ class MoviesController < ApplicationController
 
   def update
     if !current_user.admin?
-      flash[:error] = "Hey, you can't do that!"
+      flash[:error] = "Hey, you can't do that! You can't edit movies unless you're Ben, you silly goose!"
       redirect_to movies_path
+      return
     end
     @movie = Movie.find(params[:id])
     if @movie.update_attributes(params[:movie])
@@ -155,8 +157,9 @@ class MoviesController < ApplicationController
   
   def destroy
     if !current_user.admin?
-      flash[:error] = "Hey, you can't do that!"
+      flash[:error] = "Hey, you can't do that! You can't delete movies unless you're Ben, you silly goose!"
       redirect_to movies_path
+      return
     end
     @movie = Movie.find(params[:id])
     @movie.destroy
@@ -322,5 +325,11 @@ class MoviesController < ApplicationController
       # if @viewby != session[:viewby] && @viewby
       #   session[:viewby] = @viewby
       # end
+    end
+    
+    def handle_flash
+      flash.each do |type, message|
+        flash[type] = message
+      end
     end
 end
