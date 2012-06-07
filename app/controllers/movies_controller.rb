@@ -1,14 +1,16 @@
 class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
-  def index   
+  def index
     if params[:nuke]
       if Rails.env.development?
         puts "SESSION NUKE"
       end
-      session.clear
       # flash[:notice] = "Session reset."
-      redirect_to movies_path
+      @movies = Movie.all
+      @selected_ratings = Movie.all_ratings
+      @selected_locations = Movie.all_locations
+      @selected_qualities = Movie.all_qualities
       return
     end
     

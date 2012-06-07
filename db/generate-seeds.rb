@@ -11,7 +11,7 @@ require 'mechanize'
 
 title, director, rating, location, quality, release = "","","","","",""
 months = { "January" => "Jan", "February" => "Feb", "March" => "Mar", "April" => "Apr", "May" => "May", "June" => "Jun", "July" => "Jul", "August" => "Aug", "September" => "Sep", "October" => "Oct", "November" => "Nov", "December" => "Dec" }
-writeFile = File.open('new-seeds.rb','r+')
+writeFile = File.open('new-seeds.rb','a+')
 # puts 'List of Movies (filename)?:'
 # inFile = gets
 File.open('new-seeds.txt','r') do |opened|

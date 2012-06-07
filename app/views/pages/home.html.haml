@@ -11,4 +11,8 @@
 		= text_field_tag 'title_search', @title_search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
 		= submit_tag 'Search Movies', :id => 'filters_submit', :class => "btn btn-inverse"
 - else
-	You have not signed in! You may do so <a href="/users/sign_in">here</a>.
+	You have not signed in! You may do so <a href="/users/sign_in">here</a>. Here are the things you can do without signing in:
+	%ul
+		%li View potatoes (but you may not plant any).
+		%li Learn about potatoes.
+		%li Nothing else, so sign in/up and enjoy everything else!
