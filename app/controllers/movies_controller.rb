@@ -45,6 +45,10 @@ class MoviesController < ApplicationController
     
     year_params("start")
     year_params("end")
+    if !validate_years
+      redirect_to search_path
+      return
+    end
 
     page_params
 
@@ -213,7 +217,7 @@ class MoviesController < ApplicationController
       case param_type
       when 'title'
         @title_search = params[:title_search] || session[:title_search] || ""
-        if params[:title_search]
+        if params[:title_search] != ""
           session[:title_search] = params[:title_search]
         end
         if !params[:title_search] and session[:title_search]
@@ -225,7 +229,7 @@ class MoviesController < ApplicationController
         end
       when 'director'
         @director_search = params[:director_search] || session[:director_search] || ""
-        if params[:director_search]
+        if params[:director_search] != ""
           session[:director_search] = params[:director_search]
         end
         if !params[:director_search] and session[:director_search]
@@ -242,9 +246,6 @@ class MoviesController < ApplicationController
       case param_type
       when 'start'
         @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
-        if params[:start]
-          session[:start] = params[:start]
-        end
         if !params[:start] and session[:start]
           session[:start] = params[:start]
           @restore = true
@@ -255,9 +256,6 @@ class MoviesController < ApplicationController
         @start_search = Date.new(@start_year[:year].to_i,1,1)
       when 'end'
         @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
-        if params[:end]
-          session[:end] = params[:end]
-        end
         if !params[:end] and session[:end]
           session[:end] = params[:end]
           @restore = true
@@ -267,12 +265,18 @@ class MoviesController < ApplicationController
         end
         @end_search = Date.new(@end_year[:year].to_i,12,31)
       end
+    end
+    
+    def validate_years
       if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
         params[:start] = {:year => Movie.earliest_movie.year}
         params[:end] = {:year => Date.today.year+1}
         flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
-        redirect_to search_path
-        return
+        return false
+      else
+        session[:start] = params[:start]
+        session[:end] = params[:end]
+        return true
       end
     end
 
