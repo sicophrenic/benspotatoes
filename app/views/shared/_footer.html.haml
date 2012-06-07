@@ -1,3 +1,9 @@
 %br
 - if Rails.env.development?
+	%h3
+		Params:
 	= params.inspect
+	%br
+	%h3
+		Session:
+	= session.inspect

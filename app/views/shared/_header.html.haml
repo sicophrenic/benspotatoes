@@ -8,8 +8,8 @@
 			%a.brand{ :href => root_path } Ben's Potatoes
 			.nav-collapse
 				-if user_signed_in?
-					= form_tag movies_path, :method => :get, :class => 'navbar-search pull-left' do
-						= text_field_tag 'titlesearch', @title_search, :placeholder => 'Do I Have This Potato?'
+					= form_tag movies_path, :method => :get, :id => 'filters_form', :class => 'navbar-search pull-left' do
+						= text_field_tag 'title_search', @title_search, :class => 'input-medium search-query', :placeholder => 'Do I Have This Potato?'
 				%ul.nav.pull-right
 					-if user_signed_in?
 						%li

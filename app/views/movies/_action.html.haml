@@ -1,7 +1,8 @@
 .row
 	.span8
 		%br
-		= button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
+		- if current_user.admin?
+			= button_to 'Add new movie', new_movie_path, :method => :get, :class => "btn btn-inverse"
 	.span4
 		Show Per Page:
 		= form_tag movies_path, :method => :get, :id => 'paginate_form', :class => 'form-horizontal' do

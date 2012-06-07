@@ -7,7 +7,7 @@
 			- if @count == Movie.count
 				%th Total Movies: #{Movie.count}
 			- else
-				%th Movies: #{@count}
+				%th Found Movies: #{@count}
 	%tbody
 		= form_tag movies_path, :method => :get, :id => 'filters_form' do
 			%tr

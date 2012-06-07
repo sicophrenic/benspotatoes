@@ -26,7 +26,7 @@ class Movie < ActiveRecord::Base
   validates :quality, :presence => true,
                       :inclusion => { :in => %w(480p 720p 1080p) }
   validates :release_date,  :presence => true,
-                            :if => :invalid_date?
+                            :if => :invalid_movie_date?
 
   def self.all_ratings
     %w(G PG PG-13 M R)
@@ -49,7 +49,7 @@ class Movie < ActiveRecord::Base
   end
   
   protected
-    def invalid_date?
+    def invalid_movie_date?
       errors.add(:release_date, ("is not a valid date between the years of 1900 and #{Date.today.year}")) if !((1..31).include?(self.release_date.day) && (1..12).include?(self.release_date.month) && (1900..Date.today.year).include?(self.release_date.year))
     end      
   

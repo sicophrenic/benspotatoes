@@ -2,22 +2,44 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    @ratings_hash = {}
+    Movie.all_ratings.each do |rating|
+      @ratings_hash[rating] = "1"
+    end
+    
+    @locations_hash = {}
+    Movie.all_locations.each do |location|
+      @locations_hash[location] = "1"
+    end
+    
+    @qualities_hash = {}
+    Movie.all_qualities.each do |quality|
+      @qualities_hash[quality] = "1"
+    end
+    
     if params[:nuke]
       if Rails.env.development?
         puts "SESSION NUKE"
       end
       # flash[:notice] = "Session reset."
-      @movies = Movie.all
-      @selected_ratings = Movie.all_ratings
-      @selected_locations = Movie.all_locations
-      @selected_qualities = Movie.all_qualities
+      @selected_ratings = @ratings_hash
+      @selected_locations = @locations_hash
+      @selected_qualities = @qualities_hash
+      redirect_to movies_path(:ratings => @selected_ratings,
+                              :locations => @selected_locations,
+                              :qualities => @selected_qualities,
+                              :title_search => "",
+                              :director_search => "",
+                              :start => {:year => Movie.earliest_movie.year.to_i},
+                              :end => {:year => Date.today.year+1},
+                              :per_page => 20)
       return
     end
     
     checkbox_params("ratings")
     checkbox_params("locations")
     checkbox_params("qualities")
-
+     
     search_params("title")
     search_params("director")
     
@@ -30,27 +52,20 @@ class MoviesController < ApplicationController
     
     if @restore
       puts "RESTORE"
-      @sort = session[:sort]
-      @viewby = session[:viewby]
+      # @sort = session[:sort]
+      # @viewby = session[:viewby]
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,
-                              :sort => @sort,
-                              :viewby => @viewby,
+                              # :sort => @sort,
+                              # :viewby => @viewby,
                               :title_search => @title_search,
                               :director_search => @director_search,
                               :start => @start_year,
                               :end => @end_year,
-                              :per_page => @per_page)
+                              :per_page => @per_page
+                              )
       return
-    end
-    
-    if @selected_ratings.count != Movie.all_ratings.count ||
-        @selected_locations.count != Movie.all_locations.count ||
-        @selected_qualities.count != Movie.all_qualities.count ||
-        @title_search || @director_search ||
-        @start_year || @end_year
-      @check_count = true
     end
     
     if @paginate
@@ -68,7 +83,7 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => "#{@sort} #{@orderby}")
+                                  :order => "#{@sort} #{@viewby}")
       @count = @movies.count
       @movies = @movies.paginate(page: params[:page], per_page: @per_page)
     else
@@ -86,8 +101,14 @@ class MoviesController < ApplicationController
                                                                     "%#{@director_search.downcase}%",
                                                                     @start_search,
                                                                     @end_search],
-                                  :order => "#{@sort} #{@orderby}")
+                                  :order => "#{@sort} #{@viewby}")
       @count = Movie.count
+    end  
+    case @viewby
+    when 'ASC'
+      @viewby = 'DESC'
+    when 'DESC'
+      @viewby = 'ASC'
     end
   end
 
@@ -103,6 +124,10 @@ class MoviesController < ApplicationController
   end
 
   def create
+    if !current_user.admin?
+      flash[:error] = "Hey, you can't do that!"
+      redirect_to movies_path
+    end
     @movie = Movie.new(params[:movie])
     if @movie.save
       flash[:success] = "#{@movie.title} was successfully created."
@@ -114,6 +139,10 @@ class MoviesController < ApplicationController
   end
 
   def update
+    if !current_user.admin?
+      flash[:error] = "Hey, you can't do that!"
+      redirect_to movies_path
+    end
     @movie = Movie.find(params[:id])
     if @movie.update_attributes(params[:movie])
       flash[:success] = "#{@movie.title} was successfully updated."
@@ -125,6 +154,10 @@ class MoviesController < ApplicationController
   end
   
   def destroy
+    if !current_user.admin?
+      flash[:error] = "Hey, you can't do that!"
+      redirect_to movies_path
+    end
     @movie = Movie.find(params[:id])
     @movie.destroy
     flash[:success] = "#{@movie.title} was successfully deleted."
@@ -135,10 +168,6 @@ class MoviesController < ApplicationController
     def checkbox_params(param_type)
       case param_type
       when 'ratings'
-        @ratings_hash = {}
-        Movie.all_ratings.each do |rating|
-          @ratings_hash[rating] = "1"
-        end
         @selected_ratings = params[:ratings] || session[:ratings] || @ratings_hash
         if params[:ratings]
           session[:ratings] = params[:ratings]
@@ -151,10 +180,6 @@ class MoviesController < ApplicationController
           end
         end
       when 'locations'
-        @locations_hash = {}
-        Movie.all_locations.each do |location|
-          @locations_hash[location] = "1"
-        end
         @selected_locations = params[:locations] || session[:locations] || @locations_hash
         if params[:locations]
           session[:locations] = params[:locations]
@@ -167,10 +192,6 @@ class MoviesController < ApplicationController
           end
         end
       when 'qualities'
-        @qualities_hash = {}
-        Movie.all_qualities.each do |quality|
-          @qualities_hash[quality] = "1"
-        end
         @selected_qualities = params[:qualities] || session[:qualities] || @qualities_hash
         if params[:qualities]
           session[:qualities] = params[:qualities]
@@ -189,7 +210,10 @@ class MoviesController < ApplicationController
       case param_type
       when 'title'
         @title_search = params[:title_search] || session[:title_search] || ""
-        if params[:title_search] != session[:title_search] and params[:title_search] != ""
+        if params[:title_search]
+          session[:title_search] = params[:title_search]
+        end
+        if !params[:title_search] and session[:title_search]
           session[:title_search] = params[:title_search]
           @restore = true
           if Rails.env.development?
@@ -198,7 +222,10 @@ class MoviesController < ApplicationController
         end
       when 'director'
         @director_search = params[:director_search] || session[:director_search] || ""
-        if params[:director_search] != session[:director_search] && params[:director_search] != ""
+        if params[:director_search]
+          session[:director_search] = params[:director_search]
+        end
+        if !params[:director_search] and session[:director_search]
           session[:director_search] = params[:director_search]
           @restore = true
           if Rails.env.development?
@@ -212,7 +239,10 @@ class MoviesController < ApplicationController
       case param_type
       when 'start'
         @start_year = params[:start] || session[:start] || {:year => Movie.earliest_movie.year.to_i}
-        if params[:start] != session[:start] && params[:start][:year] == Movie.earliest_movie.year.to_i
+        if params[:start]
+          session[:start] = params[:start]
+        end
+        if !params[:start] and session[:start]
           session[:start] = params[:start]
           @restore = true
           if Rails.env.development?
@@ -222,7 +252,10 @@ class MoviesController < ApplicationController
         @start_search = Date.new(@start_year[:year].to_i,1,1)
       when 'end'
         @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
-        if params[:end] != session[:end] && params[:end][:year] == Date.today.year+1
+        if params[:end]
+          session[:end] = params[:end]
+        end
+        if !params[:end] and session[:end]
           session[:end] = params[:end]
           @restore = true
           if Rails.env.development?
@@ -232,8 +265,8 @@ class MoviesController < ApplicationController
         @end_search = Date.new(@end_year[:year].to_i,12,31)
       end
       if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
-        params[:start] = session[:start] = {:year => Movie.earliest_movie.year}
-        params[:end] = session[:end] = {:year => Date.today.year+1}
+        params[:start] = {:year => Movie.earliest_movie.year}
+        params[:end] = {:year => Date.today.year+1}
         flash[:error] = "Potatoes can't be harvested before they've been made! (Your start search year was later than your end search year!)"
         redirect_to search_path
         return
@@ -246,7 +279,10 @@ class MoviesController < ApplicationController
       if @per_page == "All"
         @paginate = false
       end
-      if params[:per_page] != session[:per_page] && params[:per_page].to_i != 20
+      if params[:per_page]
+        session[:per_page] = params[:per_page]
+      end
+      if !params[:per_page] and session[:per_page]
         session[:per_page] = params[:per_page]
         @restore = true
         if Rails.env.development?
@@ -256,31 +292,35 @@ class MoviesController < ApplicationController
     end
 
     def sort_params
-      @sort = params[:sort] || session[:sort] || 'title'
-      @viewby = params[:viewby] || session[:viewby] || 'ASC'
+      @sort = params[:sort] || 'title'
+      @viewby = params[:viewby] || 'ASC'
       case @sort
       when 'title'
         @title_header = 'hilite'
       when 'release_date'
         @release_header = 'hilite'
       end
-      case @viewby
-      when 'ASC'
-        @viewby = 'DESC'
-        @orderby = 'ASC'
-      when 'DESC'
+      if @sort != session[:sort]
         @viewby = 'ASC'
-        @orderby = 'DESC'
       end
-      if params[:sort] != session[:sort] && session[:sort]
-        @viewby = 'DESC'
-        @orderby = 'ASC'
-      end
-      if @sort != session[:sort] && @sort
-        session[:sort] = @sort
-      end
-      if @viewby != session[:viewby] && @viewby
-        session[:viewby] = @viewby
-      end
+      session[:sort] = @sort
+      # case @viewby
+      # when 'ASC'
+      #   @viewby = 'DESC'
+      #   @orderby = 'ASC'
+      # when 'DESC'
+      #   @viewby = 'ASC'
+      #   @orderby = 'DESC'
+      # end
+      # if params[:sort] != session[:sort] && session[:sort]
+      #   @viewby = 'DESC'
+      #   @orderby = 'ASC'
+      # end
+      # if @sort != session[:sort] && @sort
+      #   session[:sort] = @sort
+      # end
+      # if @viewby != session[:viewby] && @viewby
+      #   session[:viewby] = @viewby
+      # end
     end
 end
