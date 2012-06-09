@@ -23,31 +23,37 @@
 		%a{ :href => "https://github.com/sicophrenic/benspotatoes" } Archived task tracker
 %br
 
-%h3 FAQ
+-if user_signed_in?
+	%h3 FAQ
 
-%dl
-	%dt
-		What does the "Click to Reset" button really do?
-	%dd
-		Resets all searches to the following:
-		%ul
-			%li All Ratings
-			%li All Locations
-			%li All Qualities
-			%li Any Title
-			%li Any Director
-			%li 20 Movies Per Page
-			%li Sort By Title Ascending
-	%dt
-		How come selecting none of the checkboxes for any of the checkbox fields ends up reverting my selection to my most recent choice?
-	%dd
-		Why would you need to select none of the above for any of the filters? You're so silly.
+	%dl
+		%dt
+			What does the "Click to Reset" button really do?
+		%dd
+			Resets all searches to the following:
+			%ul
+				%li All Ratings
+				%li All Locations
+				%li All Qualities
+				%li Any Title
+				%li Any Director
+				%li 20 Movies Per Page
+				%li Sort By Title Ascending
+		%dt
+			How come selecting none of the checkboxes for any of the checkbox fields ends up reverting my selection to my most recent choice?
+		%dd
+			Why would you need to select none of the above for any of the filters? You're so silly.
 
-%h3 Troubleshooting
+	%h3 Troubleshooting
 
-%dl
-	%dt
-		%i.icon-exclamation-sign
-		Potatoes not sprouting after watering (Movies not appearing after a search)? Potatoes sprouting even if you didn't water them (Movies being incorrectly included in a search)?
-	%dd
-		Try moving to a new farm before seeding and watering it again (Reset your movie searches by clicking the <a href="/movies?nuke=nuke">All Movies</a> link)!
+	%dl
+		%dt
+			%i.icon-exclamation-sign
+			Potatoes not sprouting after watering (Movies not appearing after a search)? Potatoes sprouting even if you didn't water them (Movies being incorrectly included in a search)?
+		%dd
+			Try moving to a new farm before seeding and watering it again (Reset your movie searches by clicking the <a href="/movies?nuke=nuke">All Movies</a> link)!
+		%dt
+			%i.icon-exclamation-sign
+			Potatoes not being filtered after examining a specific potato (Filtered results not preserved)?
+		%dd
+			Some filters can't be preserved (Sort by headers not a preserved trait)!
