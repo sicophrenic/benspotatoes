@@ -24,6 +24,7 @@ end
 
 group :production do
 	gem 'pg'
+	gem 'thin'
 end
 
 group :test, :development do

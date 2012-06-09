@@ -4,9 +4,6 @@ class PagesController < ApplicationController
 
   def about
   end
-
-  def todo
-  end
   
   def search
     if !user_signed_in?
