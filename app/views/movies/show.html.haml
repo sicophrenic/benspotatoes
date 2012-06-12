@@ -1,28 +1,7 @@
 %h2 Details About Movie "#{@movie.title}"
 
 = render :partial => "shared/flash", :locals => { :flash => flash }
-
-%dl#details.dl-horizontal
-	%dt
-		Directed by:
-		%dd
-			= @movie.director
-	%dt
-		Rating:
-		%dd
-			= @movie.rating
-	%dt
-		Location:
-		%dd
-			= @movie.location
-	%dt
-		Quality:
-		%dd
-			= @movie.quality
-	%dt
-		Released on:
-		%dd
-			= @movie.release_date.strftime("%B %d, %Y")
+= render :partial => "info"
 
 - if current_user.admin?
 	= button_to 'Edit', edit_movie_path(@movie), 	:method => :get,

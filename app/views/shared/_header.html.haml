@@ -6,7 +6,8 @@
 					%span.icon-bar
 					%span.icon-bar
 					%span.icon-bar
-				%a.brand{ :href => root_path } Ben's Potatoes
+				%a.brand{ :href => root_path }
+					Ben's Potatoes
 				.nav-collapse
 					-if user_signed_in?
 						= form_tag movies_path, :method => :get, :id => 'filters_form', :class => 'navbar-search pull-left' do
@@ -14,15 +15,25 @@
 					%ul.nav.pull-right
 						-if user_signed_in?
 							%li
-								%a{ :href => search_path } Search
+								%a{ :href => search_path }
+									Search
 							%li
-								%a{ :href => movies_path } Movies
+								%a{ :href => movies_path }
+									Movies
 						%li
-							%a{ :href => about_path } About
+							%a{ :href => about_path }
+								About
 						-if user_signed_in?
-							%li
-								%a{ :href => destroy_user_session_path } Sign Out
+							%li.dropdown
+								%a{ "href" => "#", "class" => "dropdown-toggle", "data-toggle" => "dropdown" }
+									Logged In
+									%b.caret
+								%ul.dropdown-menu
+									%a{ :href => "#" } #{current_user.email}
+									%a{ :href => destroy_user_session_path }
+										Sign Out
 						-else
 							%li
-								%a{ :href => new_user_session_path } Sign In
+								%a{ :href => new_user_session_path }
+									Sign In
 %br
