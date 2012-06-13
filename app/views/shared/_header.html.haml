@@ -17,9 +17,15 @@
 							%li
 								%a{ :href => search_path }
 									Search
-							%li
-								%a{ :href => movies_path }
+							%li.dropdown
+								%a{ "href" => "#", "class" => "dropdown-toggle", "data-toggle" => "dropdown" }
 									Movies
+									%b.caret
+								%ul.dropdown-menu	
+									%a{ :href => movies_path }
+										Simple
+									%a{ :href => "#" }
+										Magical
 						%li
 							%a{ :href => about_path }
 								About

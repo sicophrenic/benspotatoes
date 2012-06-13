@@ -19,3 +19,17 @@
 		Released on:
 		%dd
 			= @movie.release_date.strftime("%B %d, %Y")
+- if current_user.admin?
+	.span1
+		= button_to 'Edit', edit_movie_path(@movie), 	:method => :get,
+																									:class => "btn btn-info",
+																									:id => "edit_btn"
+	.span1
+		= button_to 'Delete', movie_path(@movie), :method => :delete,
+																							:confirm => 'Are you sure?',
+																							:class => "btn btn-danger",
+																							:id => "delete_btn"
+.span1
+	= button_to 'All Movies', movies_path, 	:method => :get,
+																					:class => "btn btn-success",
+																					:id => "all_btn"

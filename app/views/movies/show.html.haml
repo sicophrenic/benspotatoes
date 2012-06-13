@@ -2,12 +2,3 @@
 
 = render :partial => "shared/flash", :locals => { :flash => flash }
 = render :partial => "info"
-
-- if current_user.admin?
-	= button_to 'Edit', edit_movie_path(@movie), 	:method => :get,
-																								:class => "btn btn-info"
-	= button_to 'Delete', movie_path(@movie), :method => :delete,
-																						:confirm => 'Are you sure?',
-																						:class => "btn btn-danger"
-= button_to 'All Movies', movies_path, 	:method => :get,
-																				:class => "btn btn-success"
