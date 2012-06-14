@@ -2,6 +2,8 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    puts "QUEUEUEUEUAGAINGIANGIAGNIAGN"
+    puts current_user.queue
     @ratings_hash = {}
     Movie.all_ratings.each do |rating|
       @ratings_hash[rating] = "1"
@@ -171,6 +173,36 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
   
+  def addqueue
+    @movie = Movie.find(params[:toadd])
+    @queue = current_user.queue.split('|')
+    if @queue.count == 5
+      flash[:error] = "You can't have more than five potatoes lined up! You're going to have to get rid of a few first!"
+    elsif @queue.index(@movie.id.to_s) != nil
+      flash[:error] = "That potato is already in your queue! Maybe you should take care of that one first!"
+    else
+      flash[:success] = "Congratulations! You have successfuly added a potato to your lineup!"
+      current_user.queue += "#{@movie.id}|"
+      current_user.save
+    end
+    redirect_to movie_path(@movie)
+  end
+  
+  def removequeue
+    item = params[:toremove]
+    if item == "empty"
+      current_user.queue = ""
+    else
+      if current_user.queue.split('|').index(item) != nil
+        current_user.queue = remove_item(current_user.queue, item)
+      else
+        flash[:error] = "Something's not right... That potato wasn't in your lineup!"
+      end
+    end
+    current_user.save
+    redirect_to current_user_path
+  end
+  
   protected
     def checkbox_params(param_type)
       case param_type
@@ -335,5 +367,12 @@ class MoviesController < ApplicationController
       flash.each do |type, message|
         flash[type] = message
       end
+    end
+    
+    def remove_item(queue, movie_id)
+      q = queue.split('|')
+      index = q.index(movie_id.to_s)
+      q.delete_at(index)
+      nq = q.join('|')
     end
 end

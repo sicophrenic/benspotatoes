@@ -35,7 +35,8 @@
 									Logged In
 									%b.caret
 								%ul.dropdown-menu
-									%a{ :href => "#" } #{current_user.email}
+									%a{ :href => "/me" }
+										#{current_user.email}
 									%a{ :href => destroy_user_session_path }
 										Sign Out
 						-else

@@ -1,0 +1,28 @@
+-if @queue.count == 0
+	%h1 You need more potatoes!
+	%br
+	Make sure to take a closer look at some potatoes if you want to add them to your queue.
+- else
+	%h1 The current potatoes in your lineup:
+	%br
+	- if true
+		.row
+			- @queue.each_with_index do |(movie, poster), index|
+				.span2
+					%h4
+						#{movie.title}
+					.movie-poster
+						%a{ :href => removequeue_path(:toremove => movie) }
+							%img{ :src => "#{poster}" }
+		%br
+		Click on potato poster to remove potato from your queue. Otherwise click <a href="/me/removequeue?toremove=empty">here</a> to empty your queue.
+	- else
+		.accordian
+			%ul
+				- @queue.each_with_index do |(movie, poster), index|
+					%li
+						.image_title
+							%a{ :href => "#" }
+								#{movie.title}
+						%a{ :href => "#" }
+							%img{ :src => "#{poster}" }

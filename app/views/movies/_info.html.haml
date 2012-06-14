@@ -1,35 +1,40 @@
-%dl#details.dl-horizontal
-	%dt
-		Directed by:
-		%dd
-			= @movie.director
-	%dt
-		Rating:
-		%dd
-			= @movie.rating
-	%dt
-		Location:
-		%dd
-			= @movie.location
-	%dt
-		Quality:
-		%dd
-			= @movie.quality
-	%dt
-		Released on:
-		%dd
-			= @movie.release_date.strftime("%B %d, %Y")
-- if current_user.admin?
+.row
+	%dl#details.dl-horizontal
+		%dt
+			Directed by:
+			%dd
+				= @movie.director
+		%dt
+			Rating:
+			%dd
+				= @movie.rating
+		%dt
+			Location:
+			%dd
+				= @movie.location
+		%dt
+			Quality:
+			%dd
+				= @movie.quality
+		%dt
+			Released on:
+			%dd
+				= @movie.release_date.strftime("%B %d, %Y")
+	- if current_user.admin?
+		.span1
+			= button_to 'Edit', edit_movie_path(@movie), 	:method => :get,
+																										:class => "btn btn-info",
+																										:id => "edit_btn"
+		.span1
+			= button_to 'Delete', movie_path(@movie), :method => :delete,
+																								:confirm => 'Are you sure?',
+																								:class => "btn btn-danger",
+																								:id => "delete_btn"
 	.span1
-		= button_to 'Edit', edit_movie_path(@movie), 	:method => :get,
-																									:class => "btn btn-info",
-																									:id => "edit_btn"
+		= button_to 'Queue Up', addqueue_path(:toadd => @movie),
+																								:class => "btn btn-warning",
+																								:id => "queue_btn"
 	.span1
-		= button_to 'Delete', movie_path(@movie), :method => :delete,
-																							:confirm => 'Are you sure?',
-																							:class => "btn btn-danger",
-																							:id => "delete_btn"
-.span1
-	= button_to 'All Movies', movies_path, 	:method => :get,
-																					:class => "btn btn-success",
-																					:id => "all_btn"
+		= button_to 'All Movies', movies_path, 	:method => :get,
+																						:class => "btn btn-success",
+																						:id => "all_btn"
