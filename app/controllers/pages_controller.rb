@@ -14,9 +14,11 @@ class PagesController < ApplicationController
   def currentuser
     @queue = {}
     current_user.queue.split('|').each do |id|
-      @item = Movie.find(id)
-      @queue[@item] = @item.poster
-      # @queue[@movie_item] = "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@.jpg"
+      if id != ""
+        @item = Movie.find(id)
+        @queue[@item] = @item.poster
+        # @queue[@movie_item] = "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@.jpg"
+      end
     end
   end
 end

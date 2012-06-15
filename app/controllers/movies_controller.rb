@@ -2,8 +2,6 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    puts "QUEUEUEUEUAGAINGIANGIAGNIAGN"
-    puts current_user.queue
     @ratings_hash = {}
     Movie.all_ratings.each do |rating|
       @ratings_hash[rating] = "1"
