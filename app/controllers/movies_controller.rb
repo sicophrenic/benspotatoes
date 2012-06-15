@@ -107,13 +107,19 @@ class MoviesController < ApplicationController
       redirect_to movies_path
       return
     end
-    @movie = Movie.new(params[:movie])
-    if @movie.save
-      flash[:success] = "#{@movie.title} was successfully created."
-      redirect_to movie_path(@movie)
+    if params[:generate]
+      @result = generate_movie(params[:movie][:title])
+      flash[:notice] = "#{@result.title} was successfully created. Make sure to verify the information on this page (especially Location and Quality!)"
+      redirect_to edit_movie_path(@result)
     else
-      flash[:error] = "#{@movie.title} was not successfully created: #{@movie.errors.full_messages.first}."
-      redirect_to new_movie_path
+      @movie = Movie.new(params[:movie])
+      if @movie.save
+        flash[:success] = "#{@movie.title} was successfully created."
+        redirect_to movie_path(@movie)
+      else
+        flash[:error] = "#{@movie.title} was not successfully created: #{@movie.errors.full_messages.first}."
+        redirect_to new_movie_path
+      end
     end
   end
 
@@ -377,5 +383,23 @@ class MoviesController < ApplicationController
       index = q.index(movie_id.to_s)
       q.delete_at(index)
       nq = q.join('|')
+    end
+    
+    def generate_movie(title)
+      imdb = Imdb::Search.new(title).movies().first
+      title = imdb.title.gsub(/\s?\(.*\)/,'')
+      director = imdb.director[0]
+      imdb.mpaa_rating.match(/Rated\s?(.{1,5})\s?/)
+      rating = $1
+      location = "F"
+      quality = "720p"
+      release = imdb.release_date.gsub(/\s?\(.*\)/,'').gsub(' ','-')
+      poster = imdb.poster
+      result = Movie.create!(:title => title, :director => director,
+                                              :rating => rating,
+                                              :location => location,
+                                              :quality => quality,
+                                              :release_date => release,
+                                              :poster => poster)
     end
 end

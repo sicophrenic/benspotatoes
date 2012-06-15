@@ -1,17 +1,28 @@
-= label :movie, :title, 'Title'
-= text_field :movie, 'title'
+.row
+	.span6
+		.row
+			.span4
+				= label :movie, :title, 'Title'
+				= text_field :movie, 'title', :class => 'span4'
+			.span2
+				= label :movie, :rating, 'Rating'
+				= select :movie, :rating, Movie.all_ratings, {}, {:class => 'span2'}
 
-= label :movie, :director, 'Director'
-= text_field :movie, 'director'
+		.row
+			.span4
+				= label :movie, :director, 'Director'
+				= text_field :movie, 'director', :class => 'span4'
+			.span2
+				= label :movie, :location, 'Location'
+				= select :movie, :location, Movie.all_locations, {}, {:class => 'span2'}
 
-= label :movie, :rating, 'Rating'
-= select :movie, :rating, Movie.all_ratings
-
-= label :movie, :location, 'Location'
-= select :movie, :location, Movie.all_locations
-
-= label :movie, :quality, 'Quality'
-= select :movie, :quality, Movie.all_qualities
-
-= label :movie, :release_date, 'Released On'
-= date_select :movie, :release_date
+		.row
+			.span4
+				= label :movie, :release_date, 'Released On'
+				= date_select :movie, :release_date, {}, {:class => 'input-small'}
+			.span2
+				= label :movie, :quality, 'Quality'
+				= select :movie, :quality, Movie.all_qualities, {}, {:class => 'span2'}
+	.span2
+		-if @movie
+			%img{:src=>"#{@movie.poster}"}

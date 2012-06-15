@@ -1,6 +1,16 @@
 %h1 Create New Movie
 
 = render :partial => "shared/flash", :locals => { :flash => flash }
+
+%br
+%h3 Try the auto-create process, enter the movie title and be off on your way!
+= form_tag movies_path(:generate => "generate") do
+	= text_field :movie, 'title', :id => "generate_field"
+	= submit_tag 'Generate Movie', :class => "btn btn-inverse", :id => "generate_button"
+
+
+%h3 Or go ahead and create your own:
 = form_tag movies_path do
 	= render :partial => "form"
+	%br
 	= submit_tag 'Create Movie', :class => "btn btn-inverse"
