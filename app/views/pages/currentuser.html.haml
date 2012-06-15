@@ -5,24 +5,21 @@
 - else
 	%h1 The current potatoes in your lineup:
 	%br
-	- if true
-		.row
-			- @queue.each_with_index do |(movie, poster), index|
-				.span2
-					%h4
-						#{movie.title}
-					.movie-poster
-						%a{ :href => removequeue_path(:toremove => movie) }
-							%img{ :src => "#{poster}" }
-		%br
-		Click on potato poster to remove potato from your queue. Otherwise click <a href="/me/removequeue?toremove=empty">here</a> to empty your queue.
-	- else
-		.accordian
-			%ul
-				- @queue.each_with_index do |(movie, poster), index|
-					%li
-						.image_title
-							%a{ :href => "#" }
-								#{movie.title}
-						%a{ :href => "#" }
-							%img{ :src => "#{poster}" }
+	.row
+		- @queue.each do |movie, poster|
+			.span2
+				%h4
+					#{movie.title}
+	.row
+		- @queue.each do |movie, poster|
+			.span2
+				.movie-poster
+					%a{ :href => removequeue_path(:toremove => movie) }
+						%img{ :src => "#{poster}" }
+	%br
+	Click on potato poster to remove potato from your queue. Otherwise click <a href="/me/removequeue?toremove=empty">here</a> to empty your queue.
+
+- if Rails.env.development?
+	%br
+	%br
+	%h3 Queue: #{current_user.queue}

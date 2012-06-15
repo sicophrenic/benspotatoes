@@ -174,27 +174,28 @@ class MoviesController < ApplicationController
   end
   
   def addqueue
-    @movie = Movie.find(params[:toadd])
+    @toadd = Movie.find(params[:toadd])
     @queue = current_user.queue.split('|')
     if @queue.count == 5
       flash[:error] = "You can't have more than five potatoes lined up! You're going to have to get rid of a few first!"
-    elsif @queue.index(@movie.id.to_s) != nil
+    elsif @queue.index(@toadd.id.to_s) != nil
       flash[:error] = "That potato is already in your queue! Maybe you should take care of that one first!"
     else
       flash[:success] = "Congratulations! You have successfuly added a potato to your lineup!"
-      current_user.queue += "#{@movie.id}|"
+      current_user.queue += "#{@toadd.id}|"
       current_user.save
     end
-    redirect_to movie_path(@movie)
+    redirect_to movie_path(@toadd)
   end
   
   def removequeue
-    item = params[:toremove]
-    if item == "empty"
+    @toremove= params[:toremove]
+    if @toremove == "empty"
       current_user.queue = ""
     else
-      if current_user.queue.split('|').index(item) != nil
-        current_user.queue = remove_item(current_user.queue, item)
+      if current_user.queue.split('|').index(@toremove) != nil
+        current_user.queue = remove_item(current_user.queue, @toremove)
+        current_user.queue += "|"
       else
         flash[:error] = "Something's not right... That potato wasn't in your lineup!"
       end

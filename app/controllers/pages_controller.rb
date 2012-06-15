@@ -14,8 +14,8 @@ class PagesController < ApplicationController
   def currentuser
     @queue = {}
     current_user.queue.split('|').each do |id|
-      @movie_item = Movie.find(id)
-      @queue[@movie_item] = Imdb::Search.new(@movie_item.title).movies().first.poster()
+      @item = Movie.find(id)
+      @queue[@item] = @item.poster
       # @queue[@movie_item] = "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@.jpg"
     end
   end

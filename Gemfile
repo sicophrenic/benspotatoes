@@ -11,6 +11,8 @@ gem 'bootstrap-will_paginate', '0.0.5'
 
 gem 'devise'
 
+gem 'imdb'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
