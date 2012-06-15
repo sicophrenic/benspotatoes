@@ -15,7 +15,7 @@
 			.span2
 				.movie-poster
 					%a{ :href => removequeue_path(:toremove => movie) }
-						%img{ :src => "#{poster}" }
+						%img{ :src => "#{poster}", :onerror => "this.src='/assets/defaultposter.png'" }
 	%br
 	Click on potato poster to remove potato from your queue. Otherwise click <a href="/me/removequeue?toremove=empty">here</a> to empty your queue.
 

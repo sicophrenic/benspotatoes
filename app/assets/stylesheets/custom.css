@@ -1,0 +1,37 @@
+table tr td.low
+{
+	background-color: @infoBackground;
+}
+table tr td.med
+{
+	background-color: @successBackground;
+}
+table tr td.high
+{
+	background-color: @errorBackground;
+}
+table tr th#hilite
+{
+	background-color: @grayLighter;
+}
+#edit_btn
+{
+width: 75px;
+}
+#delete_btn
+{
+width: 75px;
+}
+#all_btn
+{
+width: 75px;
+}
+#queue_btn
+{
+width: 75px;
+}
+
+.movie-poster
+{
+	width: 150px;
+}
