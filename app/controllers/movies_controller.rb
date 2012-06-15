@@ -25,6 +25,14 @@ class MoviesController < ApplicationController
       @selected_ratings = @ratings_hash
       @selected_locations = @locations_hash
       @selected_qualities = @qualities_hash
+      session[:ratings] = @selected_ratings
+      session[:locations] = @selected_locations
+      session[:qualities] = @selected_qualities
+      session[:title_search] = ""
+      session[:director_search] = ""
+      session[:start] = {:year => Movie.earliest_movie.year.to_i}
+      session[:end] = {:year => Date.today.year+1}
+      session[:per_page] = 20
       redirect_to movies_path(:ratings => @selected_ratings,
                               :locations => @selected_locations,
                               :qualities => @selected_qualities,
