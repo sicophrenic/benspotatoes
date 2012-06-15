@@ -51,6 +51,6 @@ class Movie < ActiveRecord::Base
   protected
     def invalid_movie_date?
       errors.add(:release_date, ("is not a valid date between the years of 1900 and #{Date.today.year}")) if !((1..31).include?(self.release_date.day) && (1..12).include?(self.release_date.month) && (1900..Date.today.year).include?(self.release_date.year))
-    end      
+    end 
   
 end

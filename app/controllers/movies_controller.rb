@@ -21,26 +21,8 @@ class MoviesController < ApplicationController
       if Rails.env.development?
         puts "SESSION NUKE"
       end
+      reset_movies
       # flash[:notice] = "Session reset."
-      @selected_ratings = @ratings_hash
-      @selected_locations = @locations_hash
-      @selected_qualities = @qualities_hash
-      session[:ratings] = @selected_ratings
-      session[:locations] = @selected_locations
-      session[:qualities] = @selected_qualities
-      session[:title_search] = ""
-      session[:director_search] = ""
-      session[:start] = {:year => Movie.earliest_movie.year.to_i}
-      session[:end] = {:year => Date.today.year+1}
-      session[:per_page] = 20
-      redirect_to movies_path(:ratings => @selected_ratings,
-                              :locations => @selected_locations,
-                              :qualities => @selected_qualities,
-                              :title_search => "",
-                              :director_search => "",
-                              :start => {:year => Movie.earliest_movie.year.to_i},
-                              :end => {:year => Date.today.year+1},
-                              :per_page => 20)
       return
     end
     
@@ -53,7 +35,7 @@ class MoviesController < ApplicationController
     
     year_params("start")
     year_params("end")
-    if !validate_years
+    if !valid_years?
       redirect_to search_path
       return
     end
@@ -80,42 +62,26 @@ class MoviesController < ApplicationController
       return
     end
     
-    if @paginate
-      # flash.now[:notice] = %Q(title_search for "#{@title_search}")
-      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                  location IN (?) AND
-                                                  quality IN (?) AND
-                                                  lower(title) LIKE (?) AND
-                                                  lower(director) LIKE (?) AND
-                                                  release_date >= (?) AND
-                                                  release_date <= (?)",  @selected_ratings.keys,
-                                                                    @selected_locations.keys,
-                                                                    @selected_qualities.keys,
-                                                                    "%#{@title_search.downcase}%",
-                                                                    "%#{@director_search.downcase}%",
-                                                                    @start_search,
-                                                                    @end_search],
-                                  :order => "#{@sort} #{@viewby}")
+    # flash.now[:notice] = %Q(title_search for "#{@title_search}")
+    @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
+                                                location IN (?) AND
+                                                quality IN (?) AND
+                                                lower(title) LIKE (?) AND
+                                                lower(director) LIKE (?) AND
+                                                release_date >= (?) AND
+                                                release_date <= (?)",  @selected_ratings.keys,
+                                                                  @selected_locations.keys,
+                                                                  @selected_qualities.keys,
+                                                                  "%#{@title_search.downcase}%",
+                                                                  "%#{@director_search.downcase}%",
+                                                                  @start_search,
+                                                                  @end_search],
+                                :order => "#{@sort} #{@viewby}")
       @count = @movies.count
+    if @paginate
       @movies = @movies.paginate(page: params[:page], per_page: @per_page)
-    else
-      # flash.now[:notice] = %Q(title_search for "#{@title_search}")
-      @movies = Movie.find(:all,  :conditions => ["rating IN (?) AND
-                                                  location IN (?) AND
-                                                  quality IN (?) AND
-                                                  lower(title) LIKE (?) AND
-                                                  lower(director) LIKE (?) AND
-                                                  release_date >= (?) AND
-                                                  release_date <= (?)",  @selected_ratings.keys,
-                                                                    @selected_locations.keys,
-                                                                    @selected_qualities.keys,
-                                                                    "%#{@title_search.downcase}%",
-                                                                    "%#{@director_search.downcase}%",
-                                                                    @start_search,
-                                                                    @end_search],
-                                  :order => "#{@sort} #{@viewby}")
-      @count = Movie.count
-    end  
+    end
+    
     case @viewby
     when 'ASC'
       @viewby = 'DESC'
@@ -279,6 +245,12 @@ class MoviesController < ApplicationController
           end
         end
       end
+      if @title_search != nil
+        @title_search = @title_search.gsub(/[^a-zA-Z0-9]/,'')
+      end
+      if @director_search != nil
+        @director_search = @director_search.gsub(/[^a-zA-Z0-9]/,'')
+      end
     end
 
     def year_params(param_type)
@@ -292,6 +264,7 @@ class MoviesController < ApplicationController
             puts "STARTYEAR RESTORE"
           end
         end
+        @start_year[:year] = @start_year[:year].to_s.gsub(/[^0-9]/,'').to_i
         @start_search = Date.new(@start_year[:year].to_i,1,1)
       when 'end'
         @end_year = params[:end] || session[:end] || {:year => Date.today.year+1}
@@ -302,11 +275,12 @@ class MoviesController < ApplicationController
             puts "ENDYEAR RESTORE"
           end
         end
+        @end_year[:year] = @end_year[:year].to_s.gsub(/[^0-9]/,'').to_i
         @end_search = Date.new(@end_year[:year].to_i,12,31)
       end
     end
     
-    def validate_years
+    def valid_years?
       if params[:start] && params[:end] && params[:start][:year] > params[:end][:year]
         params[:start] = {:year => Movie.earliest_movie.year}
         params[:end] = {:year => Date.today.year+1}
@@ -374,6 +348,28 @@ class MoviesController < ApplicationController
       flash.each do |type, message|
         flash[type] = message
       end
+    end
+    
+    def reset_movies
+      @selected_ratings = @ratings_hash
+      @selected_locations = @locations_hash
+      @selected_qualities = @qualities_hash
+      session[:ratings] = @selected_ratings
+      session[:locations] = @selected_locations
+      session[:qualities] = @selected_qualities
+      session[:title_search] = ""
+      session[:director_search] = ""
+      session[:start] = {:year => Movie.earliest_movie.year.to_i}
+      session[:end] = {:year => Date.today.year+1}
+      session[:per_page] = 20
+      redirect_to movies_path(:ratings => @selected_ratings,
+                              :locations => @selected_locations,
+                              :qualities => @selected_qualities,
+                              :title_search => "",
+                              :director_search => "",
+                              :start => {:year => Movie.earliest_movie.year.to_i},
+                              :end => {:year => Date.today.year+1},
+                              :per_page => 20)
     end
     
     def remove_item(queue, movie_id)
