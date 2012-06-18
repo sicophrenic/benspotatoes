@@ -43,6 +43,7 @@
 			%td= movie.location
 			%td{ :class => rowclass }= movie.quality
 			%td= movie.release_date.strftime("%F")
-			
-- if @paginate
-	= will_paginate
+
+.pagination
+	- if @paginate
+		= will_paginate
