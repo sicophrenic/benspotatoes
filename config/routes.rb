@@ -5,7 +5,8 @@ Benspotatoes::Application.routes.draw do
   match '/about', :to => 'pages#about'
   match '/todo', :to => 'pages#todo'
   
-  match '/me', :to => 'pages#currentuser', :as => 'current_user'
+  match '/users/me', :to => 'users#me', :as => 'user_queue'
+  match '/users/all', :to => 'users#index', :as => 'user_index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -23,7 +24,7 @@ Benspotatoes::Application.routes.draw do
   
   resources :movies
   match '/movies/:id/addqueue', :controller => 'movies', :action => 'addqueue', :as => 'addqueue'
-  match '/me/removequeue', :controller => 'movies', :action => 'removequeue', :as => 'removequeue'
+  match '/users/me/removequeue', :controller => 'movies', :action => 'removequeue', :as => 'removequeue'
 
   # Sample resource route with options:
   #   resources :products do

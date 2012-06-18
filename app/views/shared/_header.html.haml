@@ -26,19 +26,22 @@
 										Simple
 									%a{ :href => "#" }
 										Magical
+							%li.dropdown
+								%a{ "href" => "#", "class" => "dropdown-toggle", "data-toggle" => "dropdown" }
+									Users
+									%b.caret
+								%ul.dropdown-menu
+									%a{ :href => user_queue_path }
+										#{current_user.email}
+									%a{ :href => user_index_path }
+										Everyone
 						%li
 							%a{ :href => about_path }
 								About
 						-if user_signed_in?
-							%li.dropdown
-								%a{ "href" => "#", "class" => "dropdown-toggle", "data-toggle" => "dropdown" }
-									Logged In
-									%b.caret
-								%ul.dropdown-menu
-									%a{ :href => "/me" }
-										#{current_user.email}
-									%a{ :href => destroy_user_session_path }
-										Sign Out
+							%li
+								%a{ :href => destroy_user_session_path }
+									Sign Out
 						-else
 							%li
 								%a{ :href => new_user_session_path }

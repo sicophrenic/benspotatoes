@@ -1,0 +1,9 @@
+- if user_signed_in?
+	%h1{:class => "username"} #{current_user.email}'s queue:
+	- @user, @queue = current_user, @user_queues[current_user]
+	= render :partial => "queue"
+	- @user_queues.each do |user, queue|
+		- if user != current_user
+			%h1{:class => "username"} #{user.email}'s queue:
+			- @user, @queue = user, queue
+			= render :partial => "queue"

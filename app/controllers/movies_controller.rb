@@ -179,7 +179,7 @@ class MoviesController < ApplicationController
       end
     end
     current_user.save
-    redirect_to current_user_path
+    redirect_to user_queue_path
   end
   
   protected

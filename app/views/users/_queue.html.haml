@@ -1,0 +1,20 @@
+-if @queue.count == 0
+	%h2 You need more potatoes!
+	Make sure to take a closer look at some potatoes if you want to add them to your queue.
+- else
+	%h2 The current potatoes in your lineup:
+	%br
+	.row
+		- @queue.each do |movie|
+			.span2
+				%h4
+					#{movie.title}
+	.row
+		- @queue.each do |movie|
+			.span2
+				.movie-poster
+					- if @user == current_user
+						%a{ :href => removequeue_path(:toremove => movie) }
+							%img{ :src => "#{movie.poster}", :onerror => "this.src='/assets/defaultposter.png'" }
+					- else
+						%img{ :src => "#{movie.poster}", :onerror => "this.src='/assets/defaultposter.png'" }

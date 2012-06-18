@@ -1,0 +1,9 @@
+= render :partial => "queue"
+
+%br
+Click on potato poster to remove potato from your queue. Otherwise click <a href="/users/me/removequeue?toremove=empty">here</a> to empty your queue.
+
+- if Rails.env.development?
+	%br
+	%br
+	%h3 Queue: #{current_user.queue}
